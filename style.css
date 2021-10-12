@@ -1,52 +1,5 @@
-/* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
 html {
   box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  margin: 0;
-}
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section {
-  display: block;
-}
-summary {
-  display: list-item;
-}
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-}
-progress {
-  vertical-align: baseline;
-}
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-[hidden],
-template {
-  display: none;
 }
 a {
   background-color: transparent;
@@ -183,6 +136,7 @@ body {
   font-family: Verdana, sans-serif;
   font-size: 15px;
   line-height: 1.5;
+  justify-content: center;
 }
 html {
   overflow-x: hidden;
@@ -421,14 +375,14 @@ a {
   position: relative;
   top: 6px;
 }
-.w3-sidebar {
+/* .w3-sidebar {
   height: 100%;
   width: 200px;
   background-color: #fff;
   position: fixed !important;
   z-index: 1;
   overflow: auto;
-}
+} */
 .w3-bar-block .w3-dropdown-hover,
 .w3-bar-block .w3-dropdown-click {
   width: 100%;
@@ -894,10 +848,10 @@ a {
 .w3-row-padding > .w3-col {
   padding: 0 8px;
 }
-.w3-container,
+/* .w3-container,
 .w3-panel {
   padding: 0.01em 16px;
-}
+} */
 .w3-panel {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -957,19 +911,19 @@ a {
 .w3-animate-opacity {
   animation: opac 0.8s;
 }
-@keyframes opac {
+/* @keyframes opac {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
   }
-}
+} */
 .w3-animate-top {
   position: relative;
   animation: animatetop 0.4s;
 }
-@keyframes animatetop {
+/* @keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
@@ -992,7 +946,7 @@ a {
     left: 0;
     opacity: 1;
   }
-}
+} */
 .w3-animate-right {
   position: relative;
   animation: animateright 0.4s;
