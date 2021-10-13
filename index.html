@@ -5,30 +5,37 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body id="body">
+
     <div id="wrapper">
       <header>
         <h1>EAT @ NTU</h1>
       </header>
+      
       <nav>
         <b>
           <div class="navbar-center">
-            <span class="nav-icon"> </span>
+            <!-- <span class="nav-icon"> </span> -->
             <span class="nav-list">
               <a href="index.html">HOME</a>
               <a href="men.html">STORE</a>
               <a href="women.html">CONTACT US</a>
               <a href="sale.html">FAQ</a>
               <a href="location.html">MY ORDER</a>
-            </span>
-            <span class="nav-icon">
-              <a href="shoppingBag.html"
-                ><img id="shoppingBag" src="assets/shoppingBag/shoppingBag.png"
-              /></a>
+              <button onclick="openNav()"&#9776;>Cart</button>
             </span>
           </div>
         </b>
       </nav>
+
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
       <main>
         <!-- Slideshow container -->
         <div class="slideshow-container">
@@ -58,7 +65,7 @@
           <div class="mySlides fade">
             <div class="numbertext">3 / 3</div>
             <img
-              src="assets/frontpageSlideshow/NEW_BALANCE_XC-72_1800x.jpg"
+              src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=732&q=80"
               style="width: 100%"
             />
             <div class="text"></div>
@@ -130,34 +137,26 @@
     </div>
   </body>
   <script type="text/javascript" src="JS.js"></script>
+  
   <footer>
     <div class="flex-row-container">
       <div class="flex-row-item1">
         <h3>About Us</h3>
-        <br />
-        Here at DAMES., we realize that style and prosperity begin with the
-        correct shoes. We likewise understand that effectively finding the size
-        and style to meet your requirements is vital to your web based shopping
-        knowledge. Since beginning our web based business website in 2009, we’ve
-        been endeavoring to present to you that perfect shopping experience.
+        We are a group on NTU who are passionate about the NTU’s food! NTU’s canteen has been a big part of every student's life. However, ever since COVID-19 in 2019, it has affected both the canteen and student. With the ever-changing rules and regulations, students may find it hard to eat in canteen either due to lack of space or no-dine rules. Government has also frequently encouraged us to not stay in crowded areas and practice social distancing. Thus, we have decided to come out with a food web where users are able to order food online and have them delivered to them. Not only will the students get to enjoy the food, they are also able to avoid the crowds and eat in their room’s comfrotably.
       </div>
-      <div class="flex-row-item2">
-        <h3>Customer Service</h3>
-        <br />
-        Tel: +65 6888 8888<br /><br />
-        Email: <a href="mailto:cakeshop4717@f34.com">Dames.4717@gmail.com</a
-        ><br /><br />
-        <u>Track Your Order</u>
+      <div class="flex-row-item2" style="text-align: center;">
+        Home<br><br>
+        Stores<br><br>
+        Contact Us<br><br>
+        FAQ<br><br>
+        My Orders<br><br>
       </div>
-      <div class="flex-row-item3">
-        <h3></h3>
-        <br />
-        <img
-          id="paymentImage"
-          src="assets/footer/Six accepted payment icons.png"
-        /><br />
-        Copyright &copy; 2021 DAMES.
+      <div class="flex-row-item3" style="text-align: center;">
+        Get the latest update from us!
+        <br>
+        <input type="email" id="email" name="email" placeholder="Your Email Address">
       </div>
     </div>
   </footer>
+
 </html>
