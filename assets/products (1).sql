@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 13, 2021 at 11:40 AM
+-- Generation Time: Oct 16, 2021 at 08:57 AM
 -- Server version: 5.5.62-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.29
 
@@ -63,7 +63,8 @@ INSERT INTO `products` (`id`, `stall_id`, `product`, `price`, `type`, `type_pric
 (16, 4, 'Soy Sauce Chicken Noodle', 4.00, 'Soy Sauce Chicken Noodle,Soy Sauce Chicken Kuey Teow', '4.00,4.00', 'Noodle,Egg', '0.50,0.50', 'assets/soysaucechickennoodle.png'),
 (17, 5, 'Chicken Chop', 5.00, 'Black Pepper Sauce, Mushroom Sauce,No Sauce', '5.00,5.00,5.00', 'Garlic Bread,Mushroom Soup', '1.50,2.00', 'assets/chickenchop.png'),
 (18, 5, 'Chicken Chop Pasta', 5.00, 'Mushroom Sauce,Black Pepper Sauce,No sauce', '5.00,5.00,5.00', 'Noodle,Mushroom Soup', '0.50,2.00', 'assets/chickenchoppasta.png'),
-(19, 5, 'Burger Set', 5.00, 'Beef Burger,Chicken Burger', '5.00,5.00', 'Mushroom Soup', '2.00', 'assets/burgerset.png');
+(19, 5, 'Burger Set', 5.00, 'Beef Burger,Chicken Burger', '5.00,5.00', 'Mushroom Soup', '2.00', 'assets/burgerset.png'),
+(20, 5, 'Lamb Chop', 5.00, 'Mushroom Sauce,Black Pepper Sauce,No sauce', '5.00,5.00,5.00', 'Mushroom Soup', '2.00', 'assets/lambchop.png');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
