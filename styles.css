@@ -1,5 +1,5 @@
 header {
-  background-color: #FBE8A6;
+  background-color: #fbe8a6;
   height: 130px;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ h1 {
 }
 
 nav {
-  background-color: #D75089;
+  background-color: #d75089;
   font-weight: bold;
   text-align: center;
   font-size: 18px;
@@ -155,104 +155,6 @@ h2 {
   width: 100%;
 }
 
-/* ----------- PRODUCT PAGE ------------ */
-#productshoe {
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-  justify-content: center;
-  align-self: center;
-}
-
-.product-color {
-  font-size: 20px;
-  font-weight: bold;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.product-price {
-  font-size: 30px;
-  color: grey;
-  padding: 15px 0px;
-}
-
-.product-title {
-  font-size: 30px;
-  margin-top: 75px;
-}
-
-.product-description {
-  font-size: 15px;
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 20px 0px;
-}
-
-.productpage-wrapper {
-  background: #aaa;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.productpage-row {
-  display: flex;
-  margin: 0%;
-  /* flex-wrap: wrap; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* padding: 0px; */
-}
-
-.productpage-column-left {
-  flex: 50%;
-  background-color: #ffffff;
-  padding-left: 30px;
-  padding-right: 30px;
-  height: auto;
-  width: auto;
-  justify-content: center;
-}
-
-.productpage-column-right {
-  flex: 45%;
-  background-color: #ffffff;
-  padding-left: 25px;
-  padding-right: 30px;
-  height: auto;
-  width: auto;
-}
-
-#myBtn {
-  background-color: #495464;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 3px;
-  color: #ffffff;
-}
-
-.btn-group button {
-  background-color: #e8e8e8; /* Green background */
-  border: 1px solid #495464; /* Green border */
-  color: black; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /*Float the buttons side by side*/
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #aaa;
-}
 
 /* The Modal (background) */
 .modal {
@@ -293,158 +195,13 @@ h2 {
   cursor: pointer;
 }
 
-/* ------------- SHOPPING BAG ------------- */
-#cartWrapper {
-  padding-left: 20px;
-  padding-right: 20px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.cartTable {
-  padding-bottom: 10px;
-  width: 90%;
-}
-
-.cartTable th {
-  justify-content: start;
-  text-align: start;
-  font-size: 18px;
-}
-
-.cartTable td {
-  justify-content: start;
-  text-align: start;
-  font-size: 16px;
-}
-
-#delete {
-  width: 25px;
-}
-
-hr.solid {
-  border-top: 1px solid #000000;
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-.cartTotal {
-  float: right;
-  font-size: 18px;
-  font-weight: bold;
-  padding-right: 125px;
-}
-
-#checkoutBtn {
-  background-color: #495464;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 3px;
-  color: #ffffff;
-  float: right;
-  margin-right: 75px;
-}
-
-#backBtn {
-  background-color: #495464;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 3px;
-  color: #ffffff;
-  float: right;
-  margin-right: 40px;
-}
-
-/* ------------- LOCATION ------------- */
-#shopfront {
-  padding-bottom: 10px;
-  padding-top: 15px;
-  height: 250px;
-  width: 400px;
-}
-
-#map {
-  height: 220px;
-  width: 370px;
-  padding-right: 20px;
-}
-
-.locationTable th {
-  font-size: 25px;
-}
-
-.locationTable td {
-  width: 70%;
-  padding-left: 20px;
-}
-
-.month {
-  background: #d1b38e;
-  font-weight: bold;
-  font-size: large;
-}
-
-#musicTable {
-  width: 85%;
-  margin: auto;
-  border-spacing: 0px;
-  padding-left: 60px;
-  padding-right: 50px;
-}
-
-#musicTable td:nth-of-type(even) {
-  padding-bottom: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#musicImage {
-  flex-grow: 1;
-}
-.musicImage img {
-  width: 80%;
-  height: 80%;
-  padding-left: 20px;
-}
-
-form {
-  font-family: Verdana, Arial, sans-serif;
-  width: 420px;
-  height: 200px;
-}
-
-label {
-  /* display: inline-block; */
-  float: left;
-  clear: left;
-  width: 100px;
-  text-align: right;
-  margin-bottom: 14px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="email"],
-textarea {
-  float: left;
-  margin-left: 50px;
-  /* display: inline-block; */
-  margin-bottom: 14px;
-}
-
-input[type="submit"],
-input[type="reset"] {
-  margin-top: 20px;
-  margin-right: 200px;
-  float: left;
-}
 
 body {
   margin: auto;
   background-color: #ffffff;
   font-size: 13px;
   width: 90%;
-  font-family: Helvetica;
+  font-family: Roboto;
   min-width: 800px;
 }
 
@@ -669,7 +426,7 @@ footer,
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* The navigation menu links */
+/* The navigation menu links
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -677,7 +434,7 @@ footer,
   color: #818181;
   display: block;
   transition: 0.3s;
-}
+} */
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
@@ -693,14 +450,14 @@ footer,
   margin-left: 50px;
 }
 
-.product{
+.product {
   width: 206px;
   height: 103px;
-  background: #F4976C;
+  background: #f4976c;
   border-radius: 10px;
 }
 
-.product-img{
+.product-img {
   position: relative;
   left: 10px;
   top: 20px;
@@ -708,10 +465,10 @@ footer,
   height: 61px;
 }
 
-.product-name{
+.product-name {
   width: 61px;
   height: 24px;
-  background: #FBE8A6;
+  background: #fbe8a6;
   border-radius: 10px;
   font-family: Roboto;
   font-style: normal;
@@ -719,17 +476,16 @@ footer,
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  color: #303C63;
+  color: #303c63;
   position: relative;
-    left: 80px;
-    bottom: 40px;
-    
+  left: 80px;
+  bottom: 40px;
 }
 
-.product-button{
+.product-button {
   width: 116px;
   height: 30px;
-  background: #FBE8A6;
+  background: #fbe8a6;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-family: Roboto;
@@ -738,7 +494,7 @@ footer,
   font-size: 18px;
   line-height: 21px;
   text-align: center;
-  color: #303C63;
+  color: #303c63;
   position: relative;
   left: 80px;
   bottom: 35px;
@@ -759,8 +515,8 @@ footer,
   top: 0;
   width: 100%; /* Full width */
   /* height: 100%; Full height */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -770,11 +526,11 @@ footer,
   padding: 20px;
   /* border: 1px solid #888; */
   width: 764px;
-height: 400px;
-background: #FBE8A6;
-border: 5px solid #000000;
-box-sizing: border-box;
-border-radius: 10px;
+  height: 400px;
+  background: #fbe8a6;
+  border: 5px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 /* The Close Button */
@@ -788,6 +544,79 @@ border-radius: 10px;
 .close:hover,
 .close:focus {
   color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid #000000;
+  transform: rotate(-0.22deg);
+  display: flex;
+  min-height: 100px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cart-desc {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 18px; */
+  /* text-align: right; */
+
+  color: #303c63;
+}
+
+.cart-table{
+  padding: 10px;
+}
+.cart-table th{
+  font-size: 18px;
+}
+.cart-table td{
+  padding: 10px;
+  font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 21px;
+text-align: center;
+color: #303C63;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+.img-button{
+
+  width: 116px;
+  height: 30px;
+  background: #FBE8A6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+}
+
+.img-button-label{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  
+  color: #303C63;
+}
+
+.img-button:hover,
+.img-button:focus {
+  background-color: black;
   text-decoration: none;
   cursor: pointer;
 }

@@ -10,6 +10,12 @@ if ($_POST['product']) {
 	header('location: ' . $_SERVER['PHP_SELF']. '?' . SID);
 	exit();
 }
+if (isset($_GET['empty'])) {
+	unset($_SESSION['cart']);
+	header('location: ' . $_SERVER['PHP_SELF']);
+	exit();
+}
 
 print_r($_SESSION['cart']) ;
 ?>
+<a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
