@@ -27,24 +27,32 @@ nav {
   width: 100%;
 }
 
-.navbar-center {
+/* .navbar-center {
   width: 100%;
   display: flex;
   align-items: center;
-}
+} */
 
-.nav-icon {
+/* .nav-icon {
   flex: 10%;
-}
+} */
 
 .nav-list {
   flex: 80%;
   justify-content: space-between;
+  
 }
+
 .nav-list a {
   text-decoration: none;
   padding-left: 2.5%;
   padding-right: 2.5%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;  
 }
 nav a:link {
   color: #000000;
@@ -56,13 +64,9 @@ nav a:hover {
   color: rgb(247, 188, 100);
 }
 
-#shoppingBag {
-  width: 18px;
-}
-
 main {
   padding: 0px 0px 66px 0px;
-  background-color: #ffffff;
+  background-color: #FBE8A6;
   color: #2b1d0e;
 }
 
@@ -457,9 +461,9 @@ footer {
   margin-bottom: 20px;
 }
 
-#wrapper {
+/* #wrapper {
   background-color: #ffffff;
-}
+} */
 
 head,
 footer,
