@@ -13,7 +13,8 @@
       echo 'Error: Could not connect to database.  Please try again later.';
       exit;
     }
-    $query = "select * from products";
+    $query = "select * FROM products
+    INNER JOIN stalls ON products.stall_id = stalls.id";
     $result = $db->query($query);
     $num_results = $result->num_rows;
     $arr = array();
@@ -21,8 +22,10 @@
       $row = $result->fetch_assoc();
       array_push($arr, $row);
     }
+
     // Session to pull data into cart
     session_start();
+
     // Adding food type and addons to session['cart'] object
     if ($_POST['product']) {
       foreach($_POST['addons'] as $index=>$row) {
@@ -31,13 +34,19 @@
         $_SESSION['row'][] = $matches;
         $_SESSION['subtotal'] += floatval($matches[0][0]);
       }
-      $_SESSION['cart'][] = ['product'=>$_POST['product'], 'type'=>$_POST['type'], 'type_price'=>$_POST['type_price'], 'addons'=>$_POST['addons']] ;
+
+      $typePrice = $_POST['typePrice'];
+      $typePrice = explode(",", $typePrice);
+      $type = $typePrice[0];
+      $type_price = $typePrice[1];
+      $_SESSION['cart'][] = ['product'=>$_POST['product'], 'type'=>$type, 'type_price'=>$type_price , 'addons'=>$_POST['addons'], 'stall'=>$_POST['stall']] ;
       
-      $_SESSION['subtotal'] += $_POST['type_price'];
+      $_SESSION['subtotal'] += $type_price;
 
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
     }
+
     // Deleting item from cart
     if (isset($_GET['delete'])) {
       $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['type_price'];
@@ -45,6 +54,7 @@
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
     }
+
     //  Empty cart object
     if (isset($_GET['empty'])) {
       unset($_SESSION['cart']);
@@ -52,8 +62,6 @@
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
     }
-
-    // Render cart object into list
 
   ?>
 
@@ -71,7 +79,7 @@
               <a href="store.php">STORE</a>
               <a href="women.html">CONTACT US</a>
               <a href="sale.html">FAQ</a>
-              <a href="location.html">MY ORDER</a>
+              <a href="orders.php">MY ORDER</a>
               <button onclick="openNav()"&#9776;>Cart</button>
             </span>
           </div>
@@ -84,6 +92,7 @@
           <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
           <?php
           if($_SESSION['cart']){
+            print_r($_SESSION['cart']);
               // Iterate cart object, $key->product index, $value-> Array of info
               foreach($_SESSION['cart'] as $key=>$value) {
                 // Strip spaces and tolower for img tagg path
@@ -107,6 +116,7 @@
                   echo "<li>No add ons</li>";
 
                 }
+                $_SESSION['cart'][$key]['itemSubtotal'] = $itemSubtotal;
                 echo "<h3>Subtotal: \$ {$itemSubtotal}</h3>
                 </ul>
                 </div>";
@@ -151,7 +161,7 @@
                           // Iterate types array to attach table rows
                           foreach($types as $key=>$value) {
                             echo "<tr>
-                                    <td><input type=\"radio\" name=\"type\" value=\"{$value}\" required>{$value}</td>
+                                    <td><input type=\"radio\" name=\"typePrice\" value=\"{$value}, {$type_prices[$key]}\" required>{$value}</td>
                                     <td>{$type_prices[$key]}</td>
                                     <input type=\"hidden\" name=\"type_price\" value=\"{$type_prices[$key]}\">
                                   </tr>";
@@ -182,6 +192,7 @@
                       echo"
                       <input type=\"submit\" style=\"background: #B4DFE5;border-radius: 10px;\" value=\"Add to cart\">
                       <input type=\"hidden\" name=\"product\" value=\"{$arr[$i]["product"]}\">
+                      <input type=\"hidden\" name=\"stall\" value=\"{$arr[$i]["stall"]}\">
                       </form></table>";
                       
                       echo"
@@ -197,6 +208,7 @@
                   if($i==0 || $i==4 || $i==8 || $i==12 || $i==16)
                   {
                     echo "<div style= \"display: flex; justify-content: space-evenly;\"> ";
+                    echo $arr[$i]["stall"];
                   }
                   echo "<div class=\"product\">
                     <img class=\"product-img\" src=\"{$arr[$i]["image"]}\" alt=\"\">
