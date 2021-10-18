@@ -17,6 +17,24 @@ $address=$_POST['address'];
 $contact=$_POST['contact'];
 $zip=$_POST['zip'];
 if($_SESSION['cart']){
+    // Log customer info to orders-log
+    $query = "INSERT INTO `orders-log` 
+    (delivered, name, contact, email, address, zip)
+      VALUES(false, \"{$name}\", \"{$contact}\", \"{$email}\", \"{$address}\", \"{$zip}\")";
+    echo "<br>";
+    echo "<br>";
+
+    echo $query;
+    $result = $db->query($query);
+
+    // Get the last index in the log to be assigned the order_id, push order into orders-details
+    $queryLastIndex = "SELECT MAX( order_id ) FROM `orders-log`;";
+    echo $queryLastIndex;
+    $lastIndex = $db->query($queryLastIndex);
+    $row = $lastIndex->fetch_assoc();
+    $lastIndex = $row['MAX( order_id )'];
+    echo ( $lastIndex);
+
     // Iterate cart object, $key->product index, $value-> Array of info
     foreach($_SESSION['cart'] as $key=>$value) {
         echo $value['product'];
@@ -30,9 +48,9 @@ if($_SESSION['cart']){
         echo $a;
         echo "<br>";
 
-            $query = "INSERT INTO `orders-log` 
-            (stall, product, type, addons, total_price, delivered, name, contact, email, address, zip)
-             VALUES(\"{$value['stall']}\", \"{$value['product']}\", \"{$value['type']}\", \"{$a}\", {$value['itemSubtotal']}, false, \"{$name}\", \"{$contact}\", \"{$email}\", \"{$address}\", \"{$zip}\")";
+            $query = "INSERT INTO `orders-detail` 
+            (order_id, stall, product, type, addons, total_price)
+             VALUES({$lastIndex}, \"{$value['stall']}\", \"{$value['product']}\", \"{$value['type']}\", \"{$a}\", {$value['itemSubtotal']})";
             echo "<br>";
             echo "<br>";
 
@@ -40,18 +58,16 @@ if($_SESSION['cart']){
             $result = $db->query($query);
     
             if ($result) {
-                echo  $db->affected_rows."<br> book inserted into database.";
                 unset($_SESSION['cart']);
                 unset($_SESSION['subtotal']);
             } else {
                 echo "<br>An error has occurred.  The item was not added.";
             }
-            
         }
         header('location: ' . $_SERVER['PHP_SELF']);
         exit();
-    echo "<br>";
-    print_r( $_SESSION['cart']);
+        echo "<br>";
+        print_r( $_SESSION['cart']);
   }else{
     echo "CART IS EMPTY";
   }
