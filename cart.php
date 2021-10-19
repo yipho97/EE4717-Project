@@ -45,54 +45,7 @@
         </b>
       </nav>
       
-      <!-- Side Cart -->
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
-          <?php
-          if($_SESSION['cart']){
-              // Iterate cart object, $key->product index, $value-> Array of info
-              foreach($_SESSION['cart'] as $key=>$value) {
-                // Strip spaces and tolower for img tagg path
-                $itemSubtotal = $value['type_price'];
-                $zname_clean = $value['product'];
-                $zname_clean = preg_replace('/\s*/', '', $zname_clean);
-                $zname_clean = strtolower($zname_clean);
-                echo "<div class=\"card\">"; 
-                echo "<img class=\"product-img\" src=\"assets/{$zname_clean}.png\" alt=\"\">
-                <div class=\"cart-desc\">
-                <ul>
-                <b>{$key}: {$value['type']} \${$value['type_price']}</b>";
-                if($value['addons']){
-                  foreach($value['addons'] as $item=>$price) {
-                    $addonsPrices = explode(",", $price);
-                    $itemSubtotal += $addonsPrices[1];
-                    echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
-                  }
 
-                }else{
-                  echo "<li>No add ons</li>";
-
-                }
-                echo "<h3>Subtotal: \$ {$itemSubtotal}</h3>
-                </ul>
-                </div>";
-                echo "<span class=\"close\"><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\">×</a></span>";
-              echo "</div>";
-              }
-            }else{
-              echo "CART IS EMPTY";
-            }
-  
-          ?>
-        <div>
-          <a href="cart.php">Checkout</a>
-          <button><span style="font-size: 14px;">Check Out </span><img src="assets/add-icon.png" alt=""></button>
-          <?php print_r($_SESSION['subtotal'])  ;
-          echo "TEOKWDOK"
-          ?>
-        </div> 
-      </div>
       <div style="
       display:flex; width: 1061px;
 justify-content:center; background: #FBE8A6;
