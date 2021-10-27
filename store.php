@@ -7,34 +7,20 @@
     <link rel="stylesheet" href="store.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
-  <?php
-    // Fetch product rows from DB to array $arr 
-    @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
-    if (mysqli_connect_errno()) {
-      echo 'Error: Could not connect to database.  Please try again later.';
-      exit;
-    }
-    $query = "select * FROM products
-    INNER JOIN stalls ON products.stall_id = stalls.id";
-    $result = $db->query($query);
-    $num_results = $result->num_rows;
-    $arr = array();
-    for ($i=0; $i <$num_results; $i++) {
-      $row = $result->fetch_assoc();
-      array_push($arr, $row);
-    }
 
+  <?php
     // Session to pull data into cart
     session_start();
 
     // Adding food type and addons to session['cart'] object
     if ($_POST['product']) {
-      foreach($_POST['addons'] as $index=>$row) {
-        // Iterate addons,price string to retrieve price for computation
-        preg_match_all('!\d+\.*\d*!', $row, $matches);
-        $_SESSION['row'][] = $matches;
-        $_SESSION['subtotal'] += floatval($matches[0][0]);
-      }
+      // foreach($_POST['addons'] as $index=>$row) {
+      //   // Iterate addons,price string to retrieve price for computation
+      //   preg_match_all('!\d+\.*\d*!', $row, $matches);
+      //   $_SESSION['row'][] = $matches;
+      //   $_SESSION['subtotal'] += floatval($matches[0][0]);
+      //   $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
+      // }
 
       $typePrice = $_POST['typePrice'];
       $typePrice = explode(",", $typePrice);
@@ -42,15 +28,21 @@
       $type_price = $typePrice[1];
       $_SESSION['cart'][] = ['product'=>$_POST['product'], 'type'=>$type, 'type_price'=>$type_price , 'addons'=>$_POST['addons'], 'stall'=>$_POST['stall']] ;
       
-      $_SESSION['subtotal'] += $type_price;
-
+      // $_SESSION['subtotal'] += $type_price;
+      // $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
+    }
+    if (isset($_GET['location'])) {
+      $location = $_GET['location'];
+    }else{
+      $location = "North Spine Food Court";
     }
 
     // Deleting item from cart
     if (isset($_GET['delete'])) {
-      $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['type_price'];
+      $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['itemSubtotal'];
+      $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
       unset($_SESSION['cart'][$_GET['delete']]);
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
@@ -64,83 +56,52 @@
       exit();
     }
 
+    // Fetch product rows from DB to array $arr 
+    @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
+    if (mysqli_connect_errno()) {
+      echo 'Error: Could not connect to database.  Please try again later.';
+      exit;
+    }
+    $query = "select * FROM products
+    INNER JOIN stalls ON products.stall_id = stalls.id WHERE stalls.location LIKE '{$location}%'";
+    $result = $db->query($query);
+    $num_results = $result->num_rows;
+    $arr = array();
+    for ($i=0; $i <$num_results; $i++) {
+      $row = $result->fetch_assoc();
+      array_push($arr, $row);
+    }
+
+
+
   ?>
 
   <body id="body">
     <div id="wrapper">
-      <header>
-        <h1>EAT @ NTU</h1>
-      </header>
-
-      <nav>
-        <b>
-          <div class="navbar-center">
-            <span class="nav-list">
-              <a href="index.html">HOME</a>
-              <a href="store.php">STORE</a>
-              <a href="women.html">CONTACT US</a>
-              <a href="sale.html">FAQ</a>
-              <a href="myorders.php">MY ORDER</a>
-              <button onclick="openNav()"&#9776;>Cart</button>
-            </span>
-          </div>
-        </b>
-      </nav>
-
-      <!-- Side Cart -->
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
-          <?php
-          if($_SESSION['cart']){
-              // print_r($_SESSION['cart']);
-              // Iterate cart object, $key->product index, $value-> Array of info
-              foreach($_SESSION['cart'] as $key=>$value) {
-                // Strip spaces and tolower for img tagg path
-                $itemSubtotal = $value['type_price'];
-                $zname_clean = $value['product'];
-                $zname_clean = preg_replace('/\s*/', '', $zname_clean);
-                $zname_clean = strtolower($zname_clean);
-                echo "<div class=\"card\">"; 
-                echo "<img class=\"product-img\" src=\"assets/{$zname_clean}.png\" alt=\"\">
-                <div class=\"cart-desc\">
-                <ul>
-                <b>{$value['product']}</b>
-                <br>
-                <b>{$value['type']}</b>
-                <br>
-                <b>\${$value['type_price']}</b>";
-                if($value['addons']){
-                  foreach($value['addons'] as $item=>$price) {
-                    $addonsPrices = explode(",", $price);
-                    $itemSubtotal += $addonsPrices[1];
-                    echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
-                  }
-
-                }else{
-                  echo "<li>No add ons</li>";
-
-                }
-                $_SESSION['cart'][$key]['itemSubtotal'] = $itemSubtotal;
-                echo "<hr><h3>Subtotal: <br>\$ {$itemSubtotal}</h3>
-                </ul>
-                </div>";
-                echo "<span class=\"close\"><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\">×</a></span>";
-              echo "</div>";
-              }
-              echo"<hr style='border: 3px solid #000000;
-              transform: rotate(-0.22deg);'>
-              <span>{$_SESSION['subtotal']}</span>
-                <a href='cart.php' class='btn-w-icon-label'>
-                  <span class='cart-desc'>Check Out</span>
-                  <img src='assets/payment-icon.png' alt=''>
-                </a>'";
-            }else{
-              echo "<h2>CART IS EMPTY</h2>";
-            }
-  
-          ?>
-         
+    <div class="navbar">
+        <a href="index.html"
+          ><img
+            class="logo-image"
+            href="cart.php"
+            src="assets/logo.png"
+            width="84px"
+            height="57px"
+        /></a>
+        <div class="nav-link">
+          <a href="index.html"
+            ><i class="fa fa-fw fa-home"></i> HOME</a
+          >
+          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
+          <a href="contactus.html"
+            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
+          >
+          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+          <!-- <a onclick="openNav()" &#9776;
+                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
+              </a> -->
+        </div>
+        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
       </div>
         <!-- PHP script to inject modals -->
         <?php
@@ -210,6 +171,93 @@
         ?>
       <div> 
         <!-- Display container for products -->
+        
+      <div class="sidebar">
+        <h3 class="header-w-icon">
+          <img src="assets/location.png" alt="location.png">
+          <span>Locations</span>
+        </h3>
+
+        <a href="store.php?location=north" id="north">North Spine Food Court</a>
+        <a href="store.php?location=south" id="south">South Spine Food Court</a>
+        <a href="store.php?location=food court 2" id="food court 2">Food Court 2</a>
+        <a href="store.php?location=nanyang" id="nanyang">Nanyang Crescent Food Court</a>
+      </div>
+            <!-- Side Cart -->
+            <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="assets/arrow-right.png" alt=""></a>
+            <h3 class="header-w-icon">
+              <span>Cart</span>
+              <img src="assets/shopping-cart.png" alt="shopping-cart.png">
+            </h3>
+          <?php
+          if($_SESSION['cart']){
+              // print_r($_SESSION['cart']);
+              // Iterate cart object, $key->product index, $value-> Array of info
+              foreach($_SESSION['cart'] as $key=>$value) {
+                // Strip spaces and tolower for img tagg path
+                $zname_clean = $value['product'];
+                $zname_clean = preg_replace('/\s*/', '', $zname_clean);
+                $zname_clean = strtolower($zname_clean);
+                echo "<div class=\"card\">"; 
+                echo "<img class=\"product-img\" src=\"assets/{$zname_clean}.png\" alt=\"\">
+                <div class=\"cart-desc\">
+                <ul>
+                <b>{$value['type']}</b>
+                <br>
+                <b>\${$value['type_price']}</b>";
+                // If addon prices not added, iterate and add into itemSubtotal
+                if (!$_SESSION['cart'][$key]['itemSubtotal']){
+                  $itemSubtotal = $value['type_price'];
+                  if($value['addons']){
+                    foreach($value['addons'] as $item=>$price) {
+                      $addonsPrices = explode(",", $price);
+                      $itemSubtotal += $addonsPrices[1];
+                      $itemSubtotal = number_format($itemSubtotal, 2);
+                    }
+                  }
+                  // Add addon prices to total price
+                  $_SESSION['cart'][$key]['itemSubtotal'] = $itemSubtotal;
+                  $_SESSION['subtotal'] += $itemSubtotal;
+                  $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
+                }
+                // Display addons if there are
+                if($value['addons']){
+                  foreach($value['addons'] as $item=>$price) {
+                    $addonsPrices = explode(",", $price);
+                    echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
+                  }
+
+                }else{
+                  echo "<li>No add ons</li>";
+                }
+
+                
+                echo "<hr><h3>Subtotal: <br>\$ {$_SESSION['cart'][$key]['itemSubtotal']}</h3>
+                </ul>
+                </div>";
+                echo "<a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\" class=\"deletebtn\">×</a>";
+              echo "</div>";
+              }
+              echo"<hr style='border: 3px solid #000000;
+              transform: rotate(-0.22deg);'>
+              <h3>Total: \${$_SESSION['subtotal']}</h3>
+              <hr style='border: 3px solid #000000;
+              transform: rotate(-0.22deg);'>
+                <a href='cart.php' class='btn-w-icon-label'>
+                  <span class='cart-desc'>Check Out</span>
+                  <img src='assets/payment-icon.png' alt=''>
+                </a>'
+                <a href='{$_SERVER['PHP_SELF']}?empty=1'>Empty your cart</a></p>";
+
+            }else{
+              echo "<h2>CART IS EMPTY</h2>";
+            }
+  
+          ?>
+         
+      </div>
+
           <?php
               for ($i=0; $i <$num_results; $i++) {
                   if($i==0 || $i==4 || $i==8 || $i==12 || $i==16)

@@ -11,7 +11,8 @@
     session_start();
     // Deleting item from cart
     if (isset($_GET['delete'])) {
-      $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['type_price'];
+      $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['itemSubtotal'];
+      $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
       unset($_SESSION['cart'][$_GET['delete']]);
       header('location: ' . $_SERVER['PHP_SELF']);
       exit();
@@ -48,6 +49,7 @@
 
       <div style="
       display:flex; width: 1061px;
+      flex-direction:column;
 justify-content:center; background: #FBE8A6;
 border: 5px solid #000000;
 box-sizing: border-box;
@@ -56,8 +58,14 @@ margin-left:auto; margin-right:auto;">
           <?php
           // If cart not empty, render cart items to cart tables
           if($_SESSION['cart']){
+            echo "<div class='cart-header'>
+            <span>Cart</span>
+            <img src='assets/shopping-cart.png' alt='shopping-cart.png'>
+          </div>";
               echo " <table class=\"cart-table\">
                       <tr>
+                        <th>Del</th>
+                        <th>Stall</th>
                         <th>Image</th>
                         <th>Item</th>
                         <th>Type</th>
@@ -72,6 +80,8 @@ margin-left:auto; margin-right:auto;">
             $zname_clean = preg_replace('/\s*/', '', $zname_clean);
             $zname_clean = strtolower($zname_clean);
             echo "<tr>
+                    <td><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\" class='cart-delete'>×</a></span></td>
+                    <td>{$value['stall']}</td>
                     <td><img style=\"width:58px; height:61px;\" src=\"assets/{$zname_clean}.png\" alt=\"\"</td>
                     <td>{$value['product']}</td>
                     <td>{$value['type']} \${$value['type_price']}</td>
@@ -81,27 +91,31 @@ margin-left:auto; margin-right:auto;">
               foreach($value['addons'] as $item=>$price) {
                 $addonsPrices = explode(",", $price);
                 $itemSubtotal += $addonsPrices[1];
+                $itemSubtotal = number_format($itemSubtotal, 2);
                 echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
               }
               echo"</td>";
             }else{
               echo "<li>No add ons</li>";
             }
-            echo "<td>$ {$itemSubtotal}<span class=\"close\"><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\">×</a></span></td>";
+            echo "<td>$ {$itemSubtotal}<span class=\"close\"></td>";
           }
           echo "</tr>
-                <tr><td>
+                <tr>
+                <td>
                   Total:
                 </td>
-                <td>
+                <td colspan='6' style='text-align:right;'>
                 \$ {$_SESSION['subtotal']}
                 </td></tr>";
           echo "</table>
-          <div class=\"img-button\">
-          <a href=\"checkout.php\" class=\"img-button-label\"><span>Check Out</span><img src=\"assets/payment-icon.png\" alt=\"\"></a>
-        </div>";
+
+          <a href='checkout.php' class='btn-w-icon-label'>
+          <span class='cart-desc'>Check Out</span>
+          <img src='assets/payment-icon.png' alt=''>
+        </a>'";
         }else{
-          echo "CART IS EMPTY";
+          echo "<h2>CART IS EMPTY</h2>";
         }
         ?>
     </div>
@@ -126,6 +140,5 @@ margin-left:auto; margin-right:auto;">
       </div>
     </div>
   </footer>
-  <script type="text/javascript" src="store.js"></script>
 
 </html>

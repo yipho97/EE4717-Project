@@ -69,7 +69,7 @@
           </div>
 
           <div class="col-50">
-            <h3>Payment</h3>
+            <h3>Payment (Dummy data only)</h3>
             <label for="cname">Name on Card</label>
             <input type="text" id="cname" name="cardname" value="Random Name">
             <label for="ccnum">Credit card number</label>
@@ -104,6 +104,15 @@
         </span>
       </h4>
       <?php
+          // Deleting item from cart
+    if (isset($_GET['delete'])) {
+      $_SESSION['subtotal'] -= $_SESSION['cart'][$_GET['delete']]['itemSubtotal'];
+      $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
+      unset($_SESSION['cart'][$_GET['delete']]);
+      header('location: ' . $_SERVER['PHP_SELF']);
+      exit();
+    }
+
           if($_SESSION['cart']){
             // Iterate cart object, $key->product index, $value-> Array of info
             foreach($_SESSION['cart'] as $key=>$value) {
@@ -113,23 +122,23 @@
               $zname_clean = preg_replace('/\s*/', '', $zname_clean);
               $zname_clean = strtolower($zname_clean);
               echo "<div class=\"card\">"; 
-              echo "<img class=\"product-img\" src=\"assets/{$zname_clean}.png\" alt=\"\">
+              echo "<img src=\"assets/{$zname_clean}.png\" alt=\"\">
               <div class=\"cart-desc\">
               <ul>
-              <b>{$key}: {$value['type']} \${$value['type_price']}</b>";
+              <b>{$value['type']} \${$value['type_price']}</b>";
               if($value['addons']){
                 foreach($value['addons'] as $item=>$price) {
                   $addonsPrices = explode(",", $price);
                   $itemSubtotal += $addonsPrices[1];
                   echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
                 }
-                echo "$ {$itemSubtotal}";
+                echo "<b>Subtotal: \${$itemSubtotal}</b>";
               }else{
                 echo "<li>No add ons</li>";
               }
               echo "</ul>
               </div>";
-              echo "<span class=\"close\"><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\">×</a></span>";
+              echo "<a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\" class=\"deletebtn\">×</a>";
             echo "</div>";
             }
           }else{
@@ -139,7 +148,7 @@
           ?>
 
       <hr>
-      <p>Total <span class="price" style="color:black"><b><?php echo "\$ {$_SESSION['subtotal']}";?></b></span></p>
+      <p>Total <span class="price"><?php echo "\$ {$_SESSION['subtotal']}";?></span></p>
     </div>
   </div>
 </div>

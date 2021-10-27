@@ -82,20 +82,6 @@
   border-radius: 10px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 .menu-container {
   width: 1061px;
   justify-content: center;
@@ -132,3 +118,31 @@
   text-align: center;
   color: #303c63;
 }
+
+.sidebar {
+  float: left;
+  width: 200px;
+  margin-left: 25px;
+  background: #fbe8a6;
+  border-radius: 10px;
+  position: sticky;
+  top: 140px;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+

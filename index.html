@@ -4,37 +4,39 @@
     <title>EAT @ NTU</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
   <body id="body">
     <div id="wrapper">
-      <nav>
-        <div class="navbar-center">
-          <span class="nav-icon"> </span>
-
-          <span class="nav-list">
-            <a href="index.html">HOME</a>
-
-            <a href="store.php">STORE</a>
-
-            <a href="index.html"
-              ><img class="logo-image" src="assets/logo.png" />
-            </a>
-
-            <a href="contactus.html">CONTACT US</a>
-
-            <a href="faq.html">FAQ</a>
-          </span>
-
-          <span class="nav-icon">
-            <a href="myOrder.html">MY ORDER</a>
-
-            <a onclick="openNav()" &#9776;
-              ><img class="logo-image" href="cart.php" src="assets/logo.png" />
-            </a>
-          </span>
+      <div class="navbar">
+        <a href="index.html"
+          ><img
+            class="logo-image"
+            href="cart.php"
+            src="assets/logo.png"
+            width="84px"
+            height="57px"
+        /></a>
+        <div class="nav-link">
+          <a href="index.html"
+            ><i class="fa fa-fw fa-home"></i> HOME</a
+          >
+          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
+          <a href="contactus.html"
+            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
+          >
+          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+          <!-- <a onclick="openNav()" &#9776;
+                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
+              </a> -->
         </div>
-      </nav>
-
+        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+      </div>
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
           >&times;
@@ -52,7 +54,7 @@
           <div class="mySlides fade">
             <div class="numbertext">1 / 3</div>
             <a href="northspine.php">
-              <img src="assets/banmian.png" style="width: 100%" />
+              <img src="assets/ss1.jpg" style="width: 100%" />
             </a>
             <div class="text">North Spine</div>
           </div>
@@ -60,7 +62,7 @@
           <div class="mySlides fade">
             <div class="numbertext">2 / 3</div>
             <a href="southspine.php">
-              <img src="assets/friedrice.png" style="width: 100%" />
+              <img src="assets/ss1.jpg" style="width: 100%" />
             </a>
             <div class="text">South Spine</div>
           </div>
@@ -68,14 +70,13 @@
           <div class="mySlides fade">
             <div class="numbertext">3 / 3</div>
             <a href="canteen2.php"></a>
-            <img src="assets/burgerset.png" style="width: 100%" />
+            <img src="assets/ss1.jpg" style="width: 100%" />
             <div class="text">Canteen 2</div>
           </div>
 
           <!-- Next and previous buttons -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
           <!-- The dots/circles -->
           <div class="slider-control-bottomcenter" style="text-align: center">
             <span class="dot" onclick="currentSlide(1)"></span>
@@ -86,13 +87,12 @@
 
         <h2>LETS START EATING!</h2>
 
-          <!-- Flip Card Container-->
+        <!-- Flip Card Container-->
         <div class="flip-card-container">
-
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src="assets/northspine.png" style="height: 198px;">
+                <img src="assets/northspine.png" style="height: 198px" />
               </div>
               <div class="flip-card-back">
                 <h1>John Doe</h1>
@@ -105,7 +105,7 @@
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src="assets/northspine.png" style="height: 198px;">
+                <img src="assets/northspine.png" style="height: 198px" />
               </div>
               <div class="flip-card-back">
                 <h1>John Doe</h1>
@@ -118,7 +118,7 @@
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <img src="assets/northspine.png" style="height: 198px;">
+                <img src="assets/northspine.png" style="height: 198px" />
               </div>
               <div class="flip-card-back">
                 <h1>John Doe</h1>
@@ -127,13 +127,24 @@
               </div>
             </div>
           </div>
-          
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="assets/northspine.png" style="height: 198px" />
+              </div>
+              <div class="flip-card-back">
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
   </body>
   <script type="text/javascript" src="JS.js"></script>
-  
+
   <footer>
     <div class="flex-row-container">
       <div class="flex-row-item1">

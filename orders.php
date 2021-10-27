@@ -20,8 +20,8 @@ $zip=$_POST['zip'];
 if($_SESSION['cart']){
     // Log customer info to orders-log
     $query = "INSERT INTO `orders-log` 
-    (delivered, name, contact, email, address, zip)
-      VALUES(false, \"{$name}\", \"{$contact}\", \"{$email}\", \"{$address}\", \"{$zip}\")";
+    (delivered, name, contact, email, address, zip, total)
+      VALUES(false, \"{$name}\", \"{$contact}\", \"{$email}\", \"{$address}\", \"{$zip}\", {$_SESSION['subtotal']})";
     echo "<br>";
     echo "<br>";
 

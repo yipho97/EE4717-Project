@@ -36,17 +36,14 @@ border: 5px solid #000000;
 box-sizing: border-box;
 border-radius: 10px;
 margin-left:auto; margin-right:auto;">
-    <form action="myorders.php" method="get">
+    <form action="myorders.php" method="post">
         <input type="number" name="order_id" placeholder="ORDER ID">
+        <input type="number" name="contact" placeholder="Contact number">
         <input type="submit" value="Track Order">
     </form>
 </div>
     <?php
 
-if ($_GET['order_id'] || $_GET['order_confirmed']) {
-  $id = $_GET['order_id'];
-  echo $id;
-}
 
 if($_GET['order_confirmed']){
   $id = $_GET['order_confirmed'];
@@ -65,6 +62,10 @@ if($_GET['order_confirmed']){
   Thank you for ordering and enjoy your meal!</p>
   ";
 }
+else{
+  $id = $_POST['order_id'];
+  $contact = $_POST['contact'];
+}
     // Fetch product rows from DB to array $arr 
     @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
     if (mysqli_connect_errno()) {
@@ -72,7 +73,7 @@ if($_GET['order_confirmed']){
       exit;
     }
     $query = "SELECT * FROM `orders-log` INNER JOIN `orders-detail` ON `orders-log`.order_id = `orders-detail`.order_id 
-              WHERE contact LIKE \"%\" AND `orders-log`.order_id = {$id}";
+              WHERE contact LIKE \"%{$contact}\" AND `orders-log`.order_id = {$id}";
     // echo $query;
     $result = $db->query($query);
     $num_results = $result->num_rows;
@@ -81,45 +82,59 @@ if($_GET['order_confirmed']){
       $row = $result->fetch_assoc();
       array_push($arr, $row);
     }
-    // print_r($arr);
-    echo "<div style='width: 1061px;
-    background: #FBE8A6;
-    border: 5px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px; margin-left:auto; margin-right:auto;'> 
-                    <table class=\"cart-table\">
-                      <tr>
-                        <th>DateTime</th>
-                        <th>Photo</th>
-                        <th>Item Name</th>
-                        <th>Type</th>
-                        <th>Price</th>
-                        <th>Add ons</th>
-                        <th>Total</th>
-                      </tr>";
-      foreach($arr as $key=>$value) {
-        // print_r($value);
-        $zname_clean = $value['product'];
-        $zname_clean = preg_replace('/\s*/', '', $zname_clean);
-        $zname_clean = strtolower($zname_clean);
-        echo "<tr>
-                <td>{$value['datetime']}</td>
-                <td><img style=\"width:58px; height:61px;\" src=\"assets/{$zname_clean}.png\" alt=\"\"</td>
-                <td>{$value['product']}</td>
-                <td>{$value['type']}</td>
-                <td>\${$value['type_price']}</td>
-                <td>";
-                if($value['addons']){
-                  $addonAndPrices = explode("|", $value['addons']);
-                  foreach($addonAndPrices as $index=>$row) {
-                      echo "<li>{$row}</li>";
+    $query2 = "SELECT * FROM `orders-log` WHERE contact LIKE \"%{$contact}\" AND order_id = {$id}";
+    $result2 = $db->query($query2);
+    $res = $result2->fetch_assoc();
+    if($num_results){
+      echo "<div style='width: 1061px;
+      background: #FBE8A6;
+      border: 5px solid #000000;
+      box-sizing: border-box;
+      border-radius: 10px; margin-left:auto; margin-right:auto;'> 
+                      <table class=\"cart-table\">
+                        <tr>
+                          <th colspan='7' style='padding: 10px'>Order ID: {$id}</th>
+                        </tr>
+                        <tr>
+                          <th>DateTime</th>
+                          <th>Photo</th>
+                          <th>Item Name</th>
+                          <th>Type</th>
+                          <th>Price</th>
+                          <th>Add ons</th>
+                          <th>Subtotal</th>
+                        </tr>";
+        foreach($arr as $key=>$value) {
+          // print_r($value);
+          $zname_clean = $value['product'];
+          $zname_clean = preg_replace('/\s*/', '', $zname_clean);
+          $zname_clean = strtolower($zname_clean);
+          echo "<tr>
+                  <td>{$value['datetime']}</td>
+                  <td><img style=\"width:58px; height:61px;\" src=\"assets/{$zname_clean}.png\" alt=\"\"</td>
+                  <td>{$value['product']}</td>
+                  <td>{$value['type']}</td>
+                  <td>\${$value['type_price']}</td>
+                  <td>";
+                  if($value['addons']){
+                    $addonAndPrices = explode("|", $value['addons']);
+                    foreach($addonAndPrices as $index=>$row) {
+                        echo "<li>{$row}</li>";
+                    }
+                    echo"</td>";
+                  }else{
+                    echo "<li>No add ons</li>";
                   }
-                  echo"</td>";
-                }else{
-                  echo "<li>No add ons</li>";
-                }
-                echo "<td>\${$value['total_price']}</td></tr>";
-        } echo "</table></div>";
+                  echo "<td>\${$value['total_price']}</td></tr>";
+                } 
+          echo "<tr>
+                  <td>Delivery Status</td>
+                  <td>{$res['total']}</td>
+                </tr>";
+          echo "</table></div>";
+    }else{
+      echo "<h2>Invalid Order ID or Contact Number</h2>";
+    }
   
 ?>
 

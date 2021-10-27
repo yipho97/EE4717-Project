@@ -1,5 +1,6 @@
 console.log("CALLED");
 openNav()
+setSideNav()
 // Target modal window
 let modal = null;
 let total = 0;
@@ -23,10 +24,21 @@ window.onclick = function (event) {
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  if(document.getElementById("mySidenav").style.width == "250px"){
+    document.getElementById("mySidenav").style.width = "0px";
+  }else{
+    document.getElementById("mySidenav").style.width = "250px";
+  }
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+}
+
+function setSideNav(){
+  // Get query param location to highlight location on side nav
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const params = Object.fromEntries(urlSearchParams.entries());
+  document.getElementById(params.location).className = 'active'
 }
