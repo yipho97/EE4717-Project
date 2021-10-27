@@ -1,3 +1,4 @@
+<!-- Endpoint to receive form from checkout.php, pushes data into db and renders myorders.php -->
 <?php
 session_start();
   var_dump($_POST);
@@ -49,50 +50,28 @@ if($_SESSION['cart']){
         echo "<br>";
 
             $query = "INSERT INTO `orders-detail` 
-            (order_id, stall, product, type, addons, total_price)
-             VALUES({$lastIndex}, \"{$value['stall']}\", \"{$value['product']}\", \"{$value['type']}\", \"{$a}\", {$value['itemSubtotal']})";
+            (order_id, stall, product, type, type_price, addons, total_price)
+             VALUES({$lastIndex}, \"{$value['stall']}\", \"{$value['product']}\", \"{$value['type']}\", \"{$value['type_price']}\", \"{$a}\", {$value['itemSubtotal']})";
             echo "<br>";
             echo "<br>";
 
             echo $query;
             $result = $db->query($query);
     
-            if ($result) {
-                unset($_SESSION['cart']);
-                unset($_SESSION['subtotal']);
-            } else {
-                echo "<br>An error has occurred.  The item was not added.";
-            }
-        }
-        header('location: ' . $_SERVER['PHP_SELF']);
+          }
+          if ($result) {
+              array_push($_SESSION['cart'] );
+              unset($_SESSION['cart']);
+              unset($_SESSION['subtotal']);
+          } else {
+              echo "<br>An error has occurred.  The item was not added.";
+          }
+        header('location: ' ."myorders.php?order_confirmed={$lastIndex}");
         exit();
         echo "<br>";
-        print_r( $_SESSION['cart']);
   }else{
     echo "CART IS EMPTY";
   }
-// if($_SESSION['cart']){
-//     // Iterate cart object, $key->product index, $value-> Array of info
-//     foreach($_SESSION['cart'] as $key=>$value) {
-//       // Strip spaces and tolower for img tagg path
-//       $itemSubtotal = $value['type_price'];
-//       $zname_clean = $value['product'];
-//       echo "{$value['stall']}";
-//       echo "<br>";
-//       echo "<b>{$key}: {$value['type']} \${$value['type_price']}</b>";
-//       if($value['addons']){
-//         foreach($value['addons'] as $item=>$price) {
-//           $addonsPrices = explode(",", $price);
-//           $itemSubtotal += $addonsPrices[1];
-//           echo "<li>{$addonsPrices[0]} \${$addonsPrices[1]}</li>";
-//         }
-//         echo "$ {$itemSubtotal}";
-//       }else{
-//         echo "<li>No add ons</li>";
-//       }
-//     }
-//   }else{
-//     echo "CART IS EMPTY";
-//   }
+
   
 ?>

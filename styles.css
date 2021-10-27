@@ -359,3 +359,106 @@ footer {
   text-decoration: none;
   cursor: pointer;
 }
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid #000000;
+  transform: rotate(-0.22deg);
+  display: flex;
+  padding-right: 15px;
+  min-height: 100px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #fbe8a6;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cart-desc {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 18px; */
+  /* text-align: right; */
+
+  color: #303c63;
+}
+
+.cart-table {
+  padding: 10px;
+}
+.cart-table th {
+  font-size: 18px;
+}
+.cart-table td {
+  padding: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #303c63;
+}
+
+.cart-table tr:nth-child(even) {
+  background-color: #d6eeee;
+}
+
+.img-button {
+  width: 116px;
+  height: 30px;
+  background: #fbe8a6;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.img-button-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #303c63;
+}
+
+.img-button:hover,
+.img-button:focus {
+  background-color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-w-icon-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.17em;
+  line-height: 28px;
+  text-align: center;
+  background: #b4dfe5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+  border-radius: 10px;
+  color: #303c63;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.btn-w-icon-label img{
+  position: relative;
+  top: 5px;
+}
+
+.btn-w-icon-label:hover,
+.btn-w-icon-label:focus{
+  background-color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

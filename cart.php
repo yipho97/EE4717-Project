@@ -38,7 +38,7 @@
               <a href="store.php">STORE</a>
               <a href="women.html">CONTACT US</a>
               <a href="sale.html">FAQ</a>
-              <a href="location.html">MY ORDER</a>
+              <a href="myorders.php">MY ORDER</a>
               <button onclick="openNav()"&#9776;>Cart</button>
             </span>
           </div>
@@ -54,7 +54,7 @@ box-sizing: border-box;
 border-radius: 10px;
 margin-left:auto; margin-right:auto;">
           <?php
-          // If cart not empty, render cart items to cart table
+          // If cart not empty, render cart items to cart tables
           if($_SESSION['cart']){
               echo " <table class=\"cart-table\">
                       <tr>

@@ -4,6 +4,7 @@
     <title>EAT @ NTU</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="store.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
   <?php
@@ -79,7 +80,7 @@
               <a href="store.php">STORE</a>
               <a href="women.html">CONTACT US</a>
               <a href="sale.html">FAQ</a>
-              <a href="orders.php">MY ORDER</a>
+              <a href="myorders.php">MY ORDER</a>
               <button onclick="openNav()"&#9776;>Cart</button>
             </span>
           </div>
@@ -92,7 +93,7 @@
           <a href="<?php echo $_SERVER['PHP_SELF']; ?>?empty=1">Empty your cart</a></p>
           <?php
           if($_SESSION['cart']){
-            print_r($_SESSION['cart']);
+              // print_r($_SESSION['cart']);
               // Iterate cart object, $key->product index, $value-> Array of info
               foreach($_SESSION['cart'] as $key=>$value) {
                 // Strip spaces and tolower for img tagg path
@@ -104,7 +105,11 @@
                 echo "<img class=\"product-img\" src=\"assets/{$zname_clean}.png\" alt=\"\">
                 <div class=\"cart-desc\">
                 <ul>
-                <b>{$key}: {$value['type']} \${$value['type_price']}</b>";
+                <b>{$value['product']}</b>
+                <br>
+                <b>{$value['type']}</b>
+                <br>
+                <b>\${$value['type_price']}</b>";
                 if($value['addons']){
                   foreach($value['addons'] as $item=>$price) {
                     $addonsPrices = explode(",", $price);
@@ -117,23 +122,25 @@
 
                 }
                 $_SESSION['cart'][$key]['itemSubtotal'] = $itemSubtotal;
-                echo "<h3>Subtotal: \$ {$itemSubtotal}</h3>
+                echo "<hr><h3>Subtotal: <br>\$ {$itemSubtotal}</h3>
                 </ul>
                 </div>";
                 echo "<span class=\"close\"><a href=\"{$_SERVER['PHP_SELF']}?delete={$key}\">×</a></span>";
               echo "</div>";
               }
+              echo"<hr style='border: 3px solid #000000;
+              transform: rotate(-0.22deg);'>
+              <span>{$_SESSION['subtotal']}</span>
+                <a href='cart.php' class='btn-w-icon-label'>
+                  <span class='cart-desc'>Check Out</span>
+                  <img src='assets/payment-icon.png' alt=''>
+                </a>'";
             }else{
-              echo "CART IS EMPTY";
+              echo "<h2>CART IS EMPTY</h2>";
             }
   
           ?>
-        <div>
-          <?php print_r($_SESSION['subtotal']);?>
-        </div> 
-        <div class="img-button">
-          <a href="cart.php" class="img-button-label"><span>Check Out</span><img src="assets/payment-icon.png" alt=""></a>
-        </div>
+         
       </div>
         <!-- PHP script to inject modals -->
         <?php
@@ -152,17 +159,17 @@
                         // Split comma separated types into array
                         $types = explode(",", $arr[$i]["type"]);
                         $type_prices = explode(",", $arr[$i]["type_price"]);
-                        echo "<table>
+                        echo "<table class='modal-table'>
                                 <tr>
                                   <th>Type</th>
-                                  <th>Price</th>
+                                  <th style='width:133px;'>Price</th>
                                 </tr>
                               ";
                           // Iterate types array to attach table rows
                           foreach($types as $key=>$value) {
                             echo "<tr>
                                     <td><input type=\"radio\" name=\"typePrice\" value=\"{$value}, {$type_prices[$key]}\" required>{$value}</td>
-                                    <td>{$type_prices[$key]}</td>
+                                    <td>\${$type_prices[$key]}</td>
                                     <input type=\"hidden\" name=\"type_price\" value=\"{$type_prices[$key]}\">
                                   </tr>";
                           }
@@ -174,29 +181,30 @@
                         $addons = explode(",", $arr[$i]["addons"]);
                         $addons_prices = explode(",", $arr[$i]["addons_price"]);
 
-                        echo "<table>
+                        echo "<table class='modal-table'>
                                 <tr>
                                   <th>Add ons</th>
-                                  <th>Price</th>
+                                  <th style='width:133px;'>Price</th>
                                 </tr>
                               ";
                           // Iterate types array to attach table rows
                           foreach($addons as $key=>$value) {
                             echo "<tr>
                                     <td><input type=\"checkbox\" name=\"addons[]\" value=\"{$value},{$addons_prices[$key]}\">{$value}</td>
-                                    <td>{$addons_prices[$key]}</td>
+                                    <td>\${$addons_prices[$key]}</td>
                                   </tr>";
                           }
                       }
 
                       echo"
-                      <input type=\"submit\" style=\"background: #B4DFE5;border-radius: 10px;\" value=\"Add to cart\">
                       <input type=\"hidden\" name=\"product\" value=\"{$arr[$i]["product"]}\">
                       <input type=\"hidden\" name=\"stall\" value=\"{$arr[$i]["stall"]}\">
-                      </form></table>";
+                      </table>
+                      <input type=\"submit\" class='btn-w-icon-label' style='margin-left: 80%' value=\"Add to cart\">
+                      </form>";
                       
                       echo"
-                    </div>
+                      </div>
                   </div>";
           }
         ?>
@@ -204,20 +212,19 @@
         <!-- Display container for products -->
           <?php
               for ($i=0; $i <$num_results; $i++) {
-                  echo "<br>";
                   if($i==0 || $i==4 || $i==8 || $i==12 || $i==16)
                   {
-                    echo "<div style= \"display: flex; justify-content: space-evenly;\"> ";
-                    echo $arr[$i]["stall"];
+                    echo "<div class='menu-container'><h3 style='text-align:center'>{$arr[$i]["stall"]}<img src=\"assets/store-icon.png\" alt=\"\"></h3>";
+                    echo "<div class='menu-flex'>";
                   }
                   echo "<div class=\"product\">
                     <img class=\"product-img\" src=\"{$arr[$i]["image"]}\" alt=\"\">
-                    <div class=\"product-name\"><span>{$arr[$i]["product"]}</span></div>
+                    <div class=\"product-name\">{$arr[$i]["product"]}</div>
                     <button class=\"product-button\" onclick=\"openModal({$i})\"\">\${$arr[$i]["price"]}<span style=\"font-size: 14px;\">Add </span><img src=\"assets/add-icon.png\" alt=\"\"></button>
                   </div>";
                   if($i==3 || $i==7 || $i==11 || $i==15 || $i==19)
                   {
-                    echo "</div> ";
+                    echo "</div></div> ";
                   }
                 }
                 ?>
