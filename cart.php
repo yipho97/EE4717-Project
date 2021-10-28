@@ -27,24 +27,28 @@
   ?>
   <body id="body">
     <div id="wrapper">
-      <header>
-        <h1>EAT @ NTU</h1>
-      </header>
-      <nav>
-        <b>
-          <div class="navbar-center">
-            <!-- <span class="nav-icon"> </span> -->
-            <span class="nav-list">
-              <a href="index.html">HOME</a>
-              <a href="store.php">STORE</a>
-              <a href="women.html">CONTACT US</a>
-              <a href="sale.html">FAQ</a>
-              <a href="myorders.php">MY ORDER</a>
-              <button onclick="openNav()"&#9776;>Cart</button>
-            </span>
-          </div>
-        </b>
-      </nav>
+    <div class="navbar">
+        <a href="index.html"
+          ><img
+            class="logo-image"
+            href="cart.php"
+            src="assets/logo.png"
+            width="84px"
+            height="57px"
+        /></a>
+        <div class="nav-link">
+          <a href="index.html"
+            ><i class="fa fa-fw fa-home"></i> HOME</a
+          >
+          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
+          <a href="contactus.html"
+            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
+          >
+          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+        </div>
+        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+      </div>
       
 
       <div style="

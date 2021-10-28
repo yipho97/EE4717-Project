@@ -22,20 +22,25 @@
             height="57px"
         /></a>
         <div class="nav-link">
-          <a href="index.html"
-            ><i class="fa fa-fw fa-home"></i> HOME</a
-          >
+          <a href="index.html"> HOME</a>
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html"
-            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
-          >
-          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
-          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+          <a href="contactus.html">CONTACT US</a>
+          <a href="faq.html">FAQ</a>
+          <a href="myorders.php">MY ORDER</a>
           <!-- <a onclick="openNav()" &#9776;
                 ><img class="logo-image" href="cart.php" src="assets/logo.png" />
               </a> -->
         </div>
-        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+          <form action="myorders.php" method="post" class="form-container">
+            <input
+              type="number"
+              name="order_id"
+              min="0"
+              placeholder="Order ID"
+            />
+            <input type="number" name="contact" placeholder="Contact number" />
+            <button type="submit">Track Order</button>
+          </form>
       </div>
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"

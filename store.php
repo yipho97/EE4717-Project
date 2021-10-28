@@ -14,29 +14,19 @@
 
     // Adding food type and addons to session['cart'] object
     if ($_POST['product']) {
-      // foreach($_POST['addons'] as $index=>$row) {
-      //   // Iterate addons,price string to retrieve price for computation
-      //   preg_match_all('!\d+\.*\d*!', $row, $matches);
-      //   $_SESSION['row'][] = $matches;
-      //   $_SESSION['subtotal'] += floatval($matches[0][0]);
-      //   $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
-      // }
-
       $typePrice = $_POST['typePrice'];
       $typePrice = explode(",", $typePrice);
       $type = $typePrice[0];
       $type_price = $typePrice[1];
       $_SESSION['cart'][] = ['product'=>$_POST['product'], 'type'=>$type, 'type_price'=>$type_price , 'addons'=>$_POST['addons'], 'stall'=>$_POST['stall']] ;
       
-      // $_SESSION['subtotal'] += $type_price;
-      // $_SESSION['subtotal'] = number_format($_SESSION['subtotal'], 2);
-      header('location: ' . $_SERVER['PHP_SELF']);
+      header('location: ' . $_SERVER['PHP_SELF']. "?location=" . $_SESSION['location']);
       exit();
     }
     if (isset($_GET['location'])) {
-      $location = $_GET['location'];
-    }else{
-      $location = "North Spine Food Court";
+      $_SESSION['location'] = $_GET['location'];
+    }else if ($_GET['location']==""){
+      header('location: ' . $_SERVER['PHP_SELF']. "?location=north");
     }
 
     // Deleting item from cart
@@ -63,7 +53,7 @@
       exit;
     }
     $query = "select * FROM products
-    INNER JOIN stalls ON products.stall_id = stalls.id WHERE stalls.location LIKE '{$location}%'";
+    INNER JOIN stalls ON products.stall_id = stalls.id WHERE stalls.location LIKE '{$_SESSION['location']}%'";
     $result = $db->query($query);
     $num_results = $result->num_rows;
     $arr = array();
@@ -88,20 +78,16 @@
             height="57px"
         /></a>
         <div class="nav-link">
-          <a href="index.html"
-            ><i class="fa fa-fw fa-home"></i> HOME</a
-          >
-          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html"
-            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
-          >
-          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
-          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
-          <!-- <a onclick="openNav()" &#9776;
-                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
-              </a> -->
+          <a href="index.html">HOME</a>
+          <a href="store.php">STORE</a>
+          <a href="contactus.html">CONTACT US</a>
+          <a href="faq.html">FAQ</a>
+          <a href="myorders.php">MY ORDER</a>
         </div>
-        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+        <a href="javascript:openNav()">
+        <img src="assets/shopping-cart.png" alt="shopping-cart.png">
+        <span class='cart-count'><?php echo count($_SESSION['cart']); ?></span>
+        </a>
       </div>
         <!-- PHP script to inject modals -->
         <?php
@@ -187,11 +173,12 @@
             <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="assets/arrow-right.png" alt=""></a>
             <h3 class="header-w-icon">
-              <span>Cart</span>
-              <img src="assets/shopping-cart.png" alt="shopping-cart.png">
+              <span>Cart Items: <?php echo count($_SESSION['cart']); ?></span>
             </h3>
+            <div style="height: 600px">
           <?php
           if($_SESSION['cart']){
+              // print_r($_SESSION['location']);
               // print_r($_SESSION['cart']);
               // Iterate cart object, $key->product index, $value-> Array of info
               foreach($_SESSION['cart'] as $key=>$value) {
@@ -241,17 +228,21 @@
               }
               echo"<hr style='border: 3px solid #000000;
               transform: rotate(-0.22deg);'>
-              <h3>Total: \${$_SESSION['subtotal']}</h3>
+              <h3 class='price-label'>Total: \${$_SESSION['subtotal']}</h3>
               <hr style='border: 3px solid #000000;
               transform: rotate(-0.22deg);'>
+              <a href='{$_SERVER['PHP_SELF']}?empty=1' class='btn-w-icon-label'>
+                <span class='cart-desc'>Empty cart</span>
+              </a>
                 <a href='cart.php' class='btn-w-icon-label'>
                   <span class='cart-desc'>Check Out</span>
                   <img src='assets/payment-icon.png' alt=''>
-                </a>'
-                <a href='{$_SERVER['PHP_SELF']}?empty=1'>Empty your cart</a></p>";
+                </a>
+                </div>";
 
             }else{
-              echo "<h2>CART IS EMPTY</h2>";
+              echo "<h2>CART IS EMPTY</h2>
+              </div>";
             }
   
           ?>

@@ -14,25 +14,28 @@
     ?>
 <body id="body">
     <div id="wrapper">
-      <header>
-        <h1>EAT @ NTU</h1>
-      </header>
-
-      <nav>
-        <b>
-          <div class="navbar-center">
-            <!-- <span class="nav-icon"> </span> -->
-            <span class="nav-list">
-              <a href="index.html">HOME</a>
-              <a href="store.php">STORE</a>
-              <a href="women.html">CONTACT US</a>
-              <a href="sale.html">FAQ</a>
-              <a href="myorders.php">MY ORDER</a>
-              <button onclick="openNav()" &#9776;>Cart</button>
-            </span>
-          </div>
-        </b>
-      </nav>
+    <div class="navbar">
+        <a href="index.html"
+          ><img
+            class="logo-image"
+            href="cart.php"
+            src="assets/logo.png"
+            width="84px"
+            height="57px"
+        /></a>
+        <div class="nav-link">
+          <a href="index.html"
+            ><i class="fa fa-fw fa-home"></i> HOME</a
+          >
+          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
+          <a href="contactus.html"
+            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
+          >
+          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+        </div>
+        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+      </div>
 
       <div class="row">
   <div class="col-75">
@@ -42,10 +45,10 @@
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="firstname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="firstname" name="firstname" placeholder="John M. Doe" onchange="validateName()">
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <input type="text" id="email" name="email" placeholder="john@example.com" onchange="validateEmail()">
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             <input type="text" id="adr" name="address" placeholder="50 Nanyang Crescent">
 
@@ -59,7 +62,7 @@
           <div class="row">
               <div class="col-50">
                 <label for="contact">Contact Number</label>
-                <input type="text" id="contact" name="contact" placeholder="91234567">
+                <input type="text" id="contact" name="contact" placeholder="91234567" onchange="validateContact()">
               </div>
               <div class="col-50">
                 <label for="zip">Zip</label>
@@ -175,6 +178,6 @@
         </div>
       </div>
     </footer>
-    <script type="text/javascript" src="store.js"></script>
+    <script type="text/javascript" src="checkout.js"></script>
 
   </html>

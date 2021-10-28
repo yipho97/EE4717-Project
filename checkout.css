@@ -40,6 +40,9 @@
   padding: 10px;
 }
 
+.container .card{
+  background-color: #b4dfe5;
+}
 input[type="text"] {
   width: 100%;
   margin-bottom: 20px;
