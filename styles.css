@@ -471,3 +471,78 @@ footer {
   text-decoration: none;
   color: #303c63;
 }
+
+.contactus{
+  background-color: #FBE8A6;
+  width: 60%;
+  margin:auto;
+  border: 3px solid black;
+}
+
+#loginForm {
+  background-color: #eeea;
+  width: 60%;
+  margin:auto;
+  border: 3px solid black;
+  text-align:center;
+
+}
+
+label{
+  float: left;
+    clear: left;
+    display: block;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.faq{
+  background-color: #FBE8A6;
+  width: 60%;
+  margin:auto;
+  border: 3px solid black;
+}
+
+.aboutus{
+  background-color: #eeea;
+  width: 80%;
+  margin:auto;
+  border: 3px solid black;
+  text-align:left;
+  Font-family: Roboto;
+  Font-size: 18px;
+  Line-height: 21px;
+  Line-height: 200%;
+  Vertical-align: Top;
+}
+
+/* FAQ */
+/* Style the buttons that are used to open and close the accordion panel */
+.faqsection {
+  background-color: #eeea;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .faqsection:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
