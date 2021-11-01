@@ -501,12 +501,6 @@ label{
     margin-top: 10px;
 }
 
-.faq{
-  background-color: #FBE8A6;
-  width: 60%;
-  margin:auto;
-  border: 3px solid black;
-}
 
 .aboutus{
   background-color: #eeea;
@@ -521,10 +515,9 @@ label{
   Vertical-align: Top;
 }
 
-/* FAQ */
 /* Style the buttons that are used to open and close the accordion panel */
-.faqsection {
-  background-color: #eeea;
+.accordion {
+  background-color: #eee;
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -536,7 +529,7 @@ label{
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .faqsection:hover {
+.active, .accordion:hover {
   background-color: #ccc;
 }
 
@@ -546,6 +539,16 @@ label{
   background-color: white;
   display: none;
   overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
