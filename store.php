@@ -80,9 +80,8 @@
         <div class="nav-link">
           <a href="index.html">HOME</a>
           <a href="store.php">STORE</a>
-          <a href="contactus.html">CONTACT US</a>
+          <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
-          <a href="myorders.php">MY ORDER</a>
         </div>
         <a href="javascript:openNav()">
         <img src="assets/shopping-cart.png" alt="shopping-cart.png">

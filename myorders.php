@@ -20,50 +20,40 @@
             height="57px"
         /></a>
         <div class="nav-link">
-          <a href="index.html"
-            ><i class="fa fa-fw fa-home"></i> HOME</a
-          >
+          <a href="index.html"> HOME</a>
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html"
-            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
-          >
-          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
-          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
+          <a href="contactus.html">CONTACT US</a>
+          <a href="faq.html">FAQ</a>
+          <!-- <a onclick="openNav()" &#9776;
+                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
+              </a> -->
         </div>
-        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+          <form action="myorders.php" method="post" class="form-container">
+            <input
+              type="number"
+              name="order_id"
+              min="0"
+              placeholder="Order ID"
+            />
+            <input type="number" name="contact" placeholder="Contact number" />
+            <button type="submit">Track Order</button>
+          </form>
       </div>
-      <div style="
-      display:flex; width: 1061px;
-justify-content:center; background: #FBE8A6;
-border: 5px solid #000000;
-box-sizing: border-box;
-border-radius: 10px;
-margin-left:auto; margin-right:auto;">
-    <form action="myorders.php" method="post">
-        <input type="number" name="order_id" placeholder="ORDER ID">
-        <input type="number" name="contact" placeholder="Contact number">
-        <input type="submit" value="Track Order">
-    </form>
-</div>
-    <?php
+
+<?php
 
 
 if($_GET['order_confirmed']){
   $id = $_GET['order_confirmed'];
-  echo "
-  <p style ='font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 26px;
-  text-align: center;
-  
-  color: #000000;'>Your Order has been received! 
-  The store is currently preparing your order
-  A receipt is also sent to your email
-  
-  Thank you for ordering and enjoy your meal!</p>
-  ";
+  if($_GET['delivered']){
+    @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
+    if (mysqli_connect_errno()) {
+      echo 'Error: Could not connect to database.  Please try again later.';
+      exit;
+    }
+    $query = "UPDATE `orders-log` SET delivered = 1 WHERE order_id = {$id};";
+    $db->query($query);
+  }
 }
 else{
   $id = $_POST['order_id'];
@@ -112,6 +102,10 @@ else{
           $zname_clean = $value['product'];
           $zname_clean = preg_replace('/\s*/', '', $zname_clean);
           $zname_clean = strtolower($zname_clean);
+          $delivered = "On Delivery";
+          if($res['delivered']){
+            $delivered = "Delivered";
+          }
           echo "<tr>
                   <td>{$value['datetime']}</td>
                   <td><img style=\"width:58px; height:61px;\" src=\"assets/{$zname_clean}.png\" alt=\"\"</td>
@@ -131,7 +125,14 @@ else{
                   echo "<td>\${$value['total_price']}</td></tr>";
                 } 
           echo "<tr>
-                  <td>Delivery Status</td>
+                  <td>Delivery Status:</td>
+                  
+                  <td>{$delivered}</td>";
+                if(!$res['delivered']){
+                  echo "<td><a href='myorders.php?order_confirmed={$id}&delivered=1'>I've received my order</a></td>";
+                }
+                  
+                 echo "<td>Total: </td>
                   <td>{$res['total']}</td>
                 </tr>";
           echo "</table></div>";
@@ -163,6 +164,5 @@ else{
         </div>
       </div>
     </footer>
-    <script type="text/javascript" src="store.js"></script>
 
   </html>

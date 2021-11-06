@@ -24,9 +24,8 @@
         <div class="nav-link">
           <a href="index.html"> HOME</a>
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html">CONTACT US</a>
+          <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
-          <a href="myorders.php">MY ORDER</a>
           <!-- <a onclick="openNav()" &#9776;
                 ><img class="logo-image" href="cart.php" src="assets/logo.png" />
               </a> -->
@@ -51,7 +50,17 @@
         <a href="#">Clients</a>
         <a href="#">Contact</a>
       </div>
-
+<?php 
+if($_POST['name']){
+    @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
+    if (mysqli_connect_errno()) {
+      echo 'Error: Could not connect to database.  Please try again later.';
+      exit;
+    }
+    $query = "INSERT INTO `contact-us` VALUES('{$_POST['name']}', '{$_POST['email']}', '{$_POST['contact']}', {$_POST['id']}, '{$_POST['feedback']}')";
+    $db->query($query);
+}
+?>
       <main>
 
         <br>
@@ -60,19 +69,16 @@
 
         <h1 style="text-align: center;">Contact Us!</h1>
 
-        <form action="show_post.php" method="post" id="loginForm">
+        <form action="contactus.php" method="post" id="loginForm">
           <div class="form-input">
             <label for="myName">*Name:</label>
             <input
               type="text"
-              name="myName"
-              class="jobs"
-              id="myName"
-              placeholder="Enter your name here"
+              name="name"
+              id="firstname"
               required
               onchange="validateName()"
             />
-            <span id="hiddenNameInput" style="color:red"></span>
             <br />
           </div>
 
@@ -80,13 +86,10 @@
             <label for="email">*E-mail:</label>
             <input
               name="email"
-              class="jobs"
               id="email"
-              placeholder="Enter your Email-ID here"
               required
-              onchange="validateUser()"
+              onchange="validateEmail()"
             />
-            <span id="hiddenEmailInput" style="color:red"></span>
             <br />
           </div>
 
@@ -94,39 +97,16 @@
             <label for="phoneNum">*Phone No.:</label>
             <input
               type="value"
-              name="phoneNum"
-              class="jobs"
-              id="phoneNum"
+              name="contact"
+              id="contact"
+              onchange="validateContact()"
             /><br />
           </div>
 
           <div class="form-input">
-          <label for="outlet">Outlet</label>
-          <select id="outlet" name="outlet" style="margin-left: 5%">
-            <option value="northspine">North Spine Food Court</option>
-            <option value="canada">South Spine Food Court</option>
-            <option value="usa">Food Court 2</option>
-            <option value="usa">Nanyang Crescent Food Court</option>
-          </select>
+          <label for="outlet">Order ID:</label>
+          <input type="number" name="id">
           </div>
-
-          <div class="form-input">
-            <label for="stall">Stall</label>
-            <select id="outlet" name="outlet" style="margin-right: 2%">
-              <option value="drinks">Drinks</option>
-              <option value="miniwok">Mini Wok</option>
-              <option value="banmian">Ban Mian</option>
-              <option value="chickenrice">Chicken Rice</option>
-              <option value="western">Western</option>
-              <option value="pastaexpress">Pasta Express</option>
-              <option value="taiwanchicken">Taiwan Fried Chicken</option>
-              <option value="duckrice">Duck Rice</option>
-              <option value="chinesefood">Chinese Food</option>
-              <option value="koreanfood">Korean Food</option>
-              <option value="ayampenyett">Ayam Penyet</option>
-              <option value="thaifood">Thai Food</option>
-            </select>
-            </div>
 
           <div class="form-input">
             <label
@@ -135,8 +115,7 @@
               >*Feedback:</label
             >
             <textarea
-              name="myexperience"
-              id="myexperience"
+              name="feedback"
               rows="4"
               cols="29"
               placeholder="Enter your feedback here"
@@ -148,7 +127,7 @@
           <br />
 
           <div>
-            <input type="submit" id="" name="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </div>
 
           <br>
@@ -166,7 +145,7 @@
       </main>
     </div>
   </body>
-  <script type="text/javascript" src="JS.js"></script>
+  <script type="text/javascript" src="checkout.js"></script>
 
   <footer>
     <div class="flex-row-container">

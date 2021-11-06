@@ -60,9 +60,20 @@ if($_SESSION['cart']){
     
           }
           if ($result) {
-              array_push($_SESSION['cart'] );
+            // Transaction successful, delete existing cart and send customer email
+              // array_push($_SESSION['cart'] );
               unset($_SESSION['cart']);
               unset($_SESSION['subtotal']);
+              $to      = 'f32ee@localhost';
+              $subject = "Thank You {$name}. Your Order ID is: {$lastIndex}";
+              $message = "Greetings from EAT @ NTU. Your order has been placed and confirmed! \nOrder Id: {$lastIndex}. 
+              \nYour order ID can be used to track the status of your delivery status under the MY ORDERS page.
+              \n or http://192.168.56.2/f32ee/EE4717-Project/myorders.php?order_confirmed={$lastIndex}";
+              $headers = 'From: f32ee@localhost' . "\r\n" .
+                  'Reply-To: f32ee@localhost' . "\r\n" .
+                  'X-Mailer: PHP/' . phpversion();
+              mail($to, $subject, $message, $headers,'-ff32ee@localhost');
+
           } else {
               echo "<br>An error has occurred.  The item was not added.";
           }

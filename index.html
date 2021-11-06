@@ -24,23 +24,17 @@
         <div class="nav-link">
           <a href="index.html"> HOME</a>
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html">CONTACT US</a>
+          <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
-          <a href="myorders.php">MY ORDER</a>
           <!-- <a onclick="openNav()" &#9776;
                 ><img class="logo-image" href="cart.php" src="assets/logo.png" />
               </a> -->
         </div>
-          <form action="myorders.php" method="post" class="form-container">
-            <input
-              type="number"
-              name="order_id"
-              min="0"
-              placeholder="Order ID"
-            />
-            <input type="number" name="contact" placeholder="Contact number" />
-            <button type="submit">Track Order</button>
-          </form>
+        <form action="myorders.php" method="post" class="form-container">
+          <input type="number" name="order_id" min="0" placeholder="Order ID" />
+          <input type="number" name="contact" placeholder="Contact number" />
+          <button type="submit">Track Order</button>
+        </form>
       </div>
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
@@ -59,22 +53,33 @@
           <div class="mySlides fade">
             <div class="numbertext">What are you waiting for?</div>
             <a href="store.php">
-              <img src="assets/slideshow1.png" style="width: 100%; height: 450px;" />
+              <img
+                src="assets/slideshow1.png"
+                style="width: 100%; height: 450px"
+              />
             </a>
+            <div class="text">South Spine</div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext">Click here!</div>
             <a href="store.php">
-              <img src="assets/slideshow2.png" style="width: 100%; height: 450px;" />
+              <img
+                src="assets/slideshow2.png"
+                style="width: 100%; height: 450px"
+              />
             </a>
+            <div class="text">North Spine</div>
           </div>
 
           <div class="mySlides fade">
             <div class="numbertext">To find out more about our stores!</div>
-            <a href="store.php">
-            <img src="assets/slideshow3.png" style="width: 100%; height: 450px;" />
-            </a>
+            <a href="store.php"></a>
+            <img
+              src="assets/slideshow3.png"
+              style="width: 100%; height: 450px"
+            />
+            <div class="text">Nanyang Crescent</div>
           </div>
 
           <!-- Next and previous buttons -->
@@ -95,13 +100,13 @@
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <a href=store.php>
-                <img src="assets/northspine.png" style="height: 198px" />
+                <a href="store.php">
+                  <img src="assets/northspine.png" style="height: 198px" />
                 </a>
               </div>
               <div class="flip-card-back">
-                <a href=store.php style="text-decoration: none; ">
-                <h1>North Spine</h1>
+                <a href="store.php" style="text-decoration: none">
+                  <h1>North Spine</h1>
                 </a>
                 <p>76 Nanyang Drive, N2.1, #02-03, S637331</p>
                 <p>Working Hours: 7AM - 8PM</p>
@@ -112,13 +117,16 @@
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <a href=store.php>
-                <img src="assets/southspine.png" style="height: 198px; width: 436.750px;" />
-                </a>  
+                <a href="store.php">
+                  <img
+                    src="assets/southspine.png"
+                    style="height: 198px; width: 436.75px"
+                  />
+                </a>
               </div>
               <div class="flip-card-back">
-                <a href=store.php style="text-decoration: none; ">
-                <h1>South Spine</h1>
+                <a href="store.php" style="text-decoration: none">
+                  <h1>South Spine</h1>
                 </a>
                 <p>50 Nanyang Ave, S639798</p>
                 <p>Working Hours: 7AM - 9PM</p>
@@ -129,30 +137,35 @@
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <a href=store.php>
-                <img src="assets/nanyangcrescent.png" style="height: 198px; width: 436.750px;" />
+                <a href="store.php">
+                  <img
+                    src="assets/nanyangcrescent.png"
+                    style="height: 198px; width: 436.75px"
+                  />
                 </a>
               </div>
               <div class="flip-card-back">
-                <a href=store.php style="text-decoration: none; ">
-                <h1>Nanyang Crescent</h1>
+                <a href="store.php" style="text-decoration: none">
+                  <h1>Nanyang Crescent</h1>
                 </a>
                 <p>156 Nanyang Cres, S637125</p>
                 <p>Working Hours: 7AM - 9PM</p>
               </div>
             </div>
           </div>
-
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                <a href=store.php>
-                <img src="assets/canteen2.png" style="height: 198px; width: 436.750px;" />
+                <a href="store.php">
+                  <img
+                    src="assets/canteen2.png"
+                    style="height: 198px; width: 436.75px"
+                  />
                 </a>
               </div>
               <div class="flip-card-back">
-                <a href=store.php style="text-decoration: none; ">
-                <h1>Canteen 2</h1>
+                <a href="store.php" style="text-decoration: none">
+                  <h1>Canteen 2</h1>
                 </a>
                 <p>35 Students Walk, Singapore 639548</p>
                 <p>Working Hours: 7AM - 10PM</p>
@@ -181,11 +194,11 @@
         able to avoid the crowds and eat in their room’s comfrotably.
       </div>
       <div class="flex-row-item2" style="text-align: center">
-        <a href=index.html>Home</a><br /><br />
-        <a href=store.php>Stores</a><br /><br />
-        <a href=contactus.html>Contact Us</a><br /><br />
-        <a href=faq.html>FAQ</a><br /><br />
-        <a href=myorders.php>My Orders</a><br /><br />
+        <a href="index.html">Home</a><br /><br />
+        <a href="store.php">Stores</a><br /><br />
+        <a href="contactus.html">Contact Us</a><br /><br />
+        <a href="faq.html">FAQ</a><br /><br />
+        <a href="myorders.php">My Orders</a><br /><br />
       </div>
       <div class="flex-row-item3" style="text-align: center">
         Get the latest update from us!

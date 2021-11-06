@@ -32,7 +32,6 @@
             ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
           >
           <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
-          <a href="myorders.php"><i class="fa fa-fw fa-user"></i> MY ORDER</a>
         </div>
         <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
       </div>
