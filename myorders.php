@@ -20,9 +20,9 @@
             height="57px"
         /></a>
         <div class="nav-link">
-          <a href="index.html"> HOME</a>
-          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html">CONTACT US</a>
+          <a href="index.html">HOME</a>
+          <a href="store.php">STORE</a>
+          <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
         </div>
           <form action="myorders.php" method="post" class="form-container">
@@ -122,11 +122,11 @@ else{
                   echo "<td>\${$value['total_price']}</td></tr>";
                 } 
           echo "<tr>
-                  <td>Delivery Status:</td>
-                  
-                  <td>{$delivered}</td>";
+                  <td>Delivery Status:</td>";
                 if(!$res['delivered']){
-                  echo "<td colspan='3'><a href='myorders.php?order_confirmed={$id}&delivered=1'>I've received my order (Confirm delivery)</a></td>";
+                  echo "<td colspan='4'><a href='myorders.php?order_confirmed={$id}&delivered=1'>I've received my order (Confirm delivery)</a></td>";
+                }else{
+                  echo "<td colspan=4 style='text-align:left'>{$delivered}</td>";
                 }
                   
                  echo "<td>Total: </td>

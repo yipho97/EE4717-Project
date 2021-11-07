@@ -2,7 +2,7 @@ body {
   margin: auto;
   background-color: #f0e3ca;
   font-size: 13px;
-  width: 90%;
+  width: 95%;
   font-family: Roboto;
   min-width: 800px;
   background-image: url("assets/background.jpg");
@@ -14,7 +14,6 @@ body {
 }
 
 head,
-/* footer, */
 #wrapper {
   margin-left: 40px;
   margin-right: 40px;
@@ -75,12 +74,6 @@ head,
   background-color: #04aa6d;
 }
 
-main {
-  /* padding: 0px 0px 66px 0px; */
-  /* background-color: #b4dfe5; */
-  color: #2b1d0e;
-}
-
 /* Slideshow container */
 .slideshow-container {
   max-width: 70%;
@@ -125,10 +118,10 @@ main {
 
 /* Caption text */
 .text {
-  color: #ffffff;
+  color: #303c63;
   font-size: 25px;
   font-weight: bold;
-  padding: 8px 12px;
+  padding: 28px 12px;
   position: absolute;
   bottom: 8px;
   width: 100%;
@@ -236,8 +229,6 @@ h2 {
   color: black;
   transform: rotateY(180deg);
 }
-
-
 
 /* The Close Button */
 .close {
@@ -510,104 +501,99 @@ h2 {
 }
 
 /* Footer section */
- .footer-distributed{
+.footer-distributed {
   background-color: #b9af9d;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
   text-align: left;
   font: bold 16px Roboto;
-  
+
   padding: 55px 50px;
   margin-top: 80px;
- }
-  
- .footer-distributed .footer-left,
- .footer-distributed .footer-center,
- .footer-distributed .footer-right{
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
   display: inline-block;
   vertical-align: top;
- }
-  
- .footer-distributed .footer-left{
+}
+
+.footer-distributed .footer-left {
   width: 40%;
- }
-  
- .footer-distributed h3{
-  color:  #303c63;
-  font: normal 36px 'Cookie', Roboto;
+}
+
+.footer-distributed h3 {
+  color: #303c63;
+  font: normal 36px "Cookie", Roboto;
   margin: 0;
- }
-  
- .footer-distributed h3 span{
-  color:  #5383d3;
- }
-  
-  
- .footer-distributed .footer-links{
-  color:  #303c63;
+}
+
+.footer-distributed h3 span {
+  color: #5383d3;
+}
+
+.footer-distributed .footer-links {
+  color: #303c63;
   margin: 20px 0 12px;
   padding: 0;
- }
-  
- .footer-distributed .footer-links a{
-  display:inline-block;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
   line-height: 1.8;
   text-decoration: none;
-  color:  inherit;
- }
-  
- .footer-distributed .footer-company-name{
-  color:  #303c63;
+  color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+  color: #303c63;
   font-size: 14px;
   font-weight: normal;
   margin: 0;
- }
-  
-  
- .footer-distributed .footer-center{
+}
+
+.footer-distributed .footer-center {
   width: 35%;
- }
-  
+}
 
-
- .footer-distributed .footer-center p{
+.footer-distributed .footer-center p {
   display: inline-block;
   color: #303c63;
   vertical-align: middle;
-  margin:0;
+  margin: 0;
   padding-bottom: 10px;
- }
-  
- .footer-distributed .footer-center p span{
-  display:block;
+}
+
+.footer-distributed .footer-center p span {
+  display: block;
   font-weight: normal;
-  font-size:14px;
-  line-height:2;
- }
-  
- .footer-distributed .footer-center p a{
-  color:  #5383d3;
-  text-decoration: none;;
- }
-  
- .footer-distributed .footer-right{
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+  color: #5383d3;
+  text-decoration: none;
+}
+
+.footer-distributed .footer-right {
   width: 20%;
- }
-  
- .footer-distributed .footer-company-about{
+}
+
+.footer-distributed .footer-company-about {
   line-height: 20px;
-  color:  #303c63;
+  color: #303c63;
   font-size: 13px;
   font-weight: normal;
   margin: 0;
- }
-  
- .footer-distributed .footer-company-about span{
+}
+
+.footer-distributed .footer-company-about span {
   display: block;
-  color:  #303c63;
+  color: #303c63;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 20px;
- }
-  
+}
