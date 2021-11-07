@@ -14,27 +14,27 @@
     ?>
 <body id="body">
     <div id="wrapper">
-    <div class="navbar">
-        <a href="index.html"
-          ><img
-            class="logo-image"
-            href="cart.php"
-            src="assets/logo.png"
-            width="84px"
-            height="57px"
-        /></a>
-        <div class="nav-link">
+      <div class="navbar">
           <a href="index.html"
-            ><i class="fa fa-fw fa-home"></i> HOME</a
-          >
-          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.php"
-            ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
-          >
-          <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+            ><img
+              class="logo-image"
+              href="cart.php"
+              src="assets/logo.png"
+              width="84px"
+              height="57px"
+          /></a>
+          <div class="nav-link">
+            <a href="index.html"
+              ><i class="fa fa-fw fa-home"></i> HOME</a
+            >
+            <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
+            <a href="contactus.php"
+              ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
+            >
+            <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
+          </div>
+          <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
         </div>
-        <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
-      </div>
 
       <div class="row">
   <div class="col-75">
