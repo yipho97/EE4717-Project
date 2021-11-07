@@ -67,8 +67,10 @@ if($_SESSION['cart']){
               $to      = 'f32ee@localhost';
               $subject = "Thank You {$name}. Your Order ID is: {$lastIndex}";
               $message = "Greetings from EAT @ NTU. Your order has been placed and confirmed! \nOrder Id: {$lastIndex}. 
-              \nYour order ID can be used to track the status of your delivery status under the MY ORDERS page.
-              \n or http://192.168.56.2/f32ee/EE4717-Project/myorders.php?order_confirmed={$lastIndex}";
+              \nYour order ID can be used to track the status of your delivery status on the \"Track Order\" section.
+              \n or http://192.168.56.2/f32ee/EE4717-Project/myorders.php?order_confirmed={$lastIndex}\n
+              Please click on confirm delivery after you have received your order.\n
+              Thank You and enjoy your meal!";
               $headers = 'From: f32ee@localhost' . "\r\n" .
                   'Reply-To: f32ee@localhost' . "\r\n" .
                   'X-Mailer: PHP/' . phpversion();

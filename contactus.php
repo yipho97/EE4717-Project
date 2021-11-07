@@ -3,6 +3,7 @@
   <head>
     <title>EAT @ NTU</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="checkout.css" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="http://fonts.googleapis.com/css?family=Roboto"
@@ -12,173 +13,140 @@
   </head>
   <body id="body">
     <div id="wrapper">
-      <div class="navbar" style="margin-bottom: 0px;">
-        <a href="index.html"
-          ><img
-            class="logo-image"
-            href="cart.php"
-            src="assets/logo.png"
-            width="84px"
-            height="57px"
-        /></a>
-        <div class="nav-link">
-          <a href="index.html"> HOME</a>
-          <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.php">CONTACT US</a>
-          <a href="faq.html">FAQ</a>
-          <!-- <a onclick="openNav()" &#9776;
-                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
-              </a> -->
-        </div>
-          <form action="myorders.php" method="post" class="form-container">
-            <input
-              type="number"
-              name="order_id"
-              min="0"
-              placeholder="Order ID"
-            />
-            <input type="number" name="contact" placeholder="Contact number" />
-            <button type="submit">Track Order</button>
-          </form>
+    <div class="navbar">
+      <a href="index.html"
+        ><img
+          class="logo-image"
+          href="cart.php"
+          src="assets/logo.png"
+          width="84px"
+          height="57px"
+      /></a>
+      <div class="nav-link">
+        <a href="index.html">HOME</a>
+        <a href="store.php">STORE</a>
+        <a href="contactus.php">CONTACT US</a>
+        <a href="faq.html">FAQ</a>
       </div>
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;
-        </a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
+      <a href="cart.php"><i class="fa fa-fw fa-user"></i>Cart</a>
+    </div>
+
 <?php 
-if($_POST['name']){
+if($_POST['firstname']){
     @ $db = new mysqli('localhost', 'f32ee', 'f32ee', 'f32ee');
     if (mysqli_connect_errno()) {
       echo 'Error: Could not connect to database.  Please try again later.';
       exit;
     }
-    $query = "INSERT INTO `contact-us` VALUES('{$_POST['name']}', '{$_POST['email']}', '{$_POST['contact']}', {$_POST['id']}, '{$_POST['feedback']}')";
+    $query = "INSERT INTO `contact-us` VALUES('{$_POST['firstname']}', '{$_POST['email']}', '{$_POST['contact']}', '{$_POST['id']}', '{$_POST['feedback']}')";
     $db->query($query);
+    header('location: ' . $_SERVER['PHP_SELF']. "?success=1");
+}
+if($_GET['success']){
+  echo "<div class='contactus'style='text-align:center'>
+          <h3>Your feedback has been received. We'll take approximately 3 working days to attend to it.</h3>
+        </div>";
 }
 ?>
-      <main>
-
-        <br>
-        
-        <div class=contactus>
-
+    <div class=contactus>
         <h1 style="text-align: center;">Contact Us!</h1>
+        <form action="contactus.php" method="post">
+  <div class="row">
+    <div class="col-50">
+      <h3>Have a feedback for your order? Drop us a feedback and we'll get back to you soon.</h3>
+      <label>Full Name</label>
+      <input
+        type="text"
+        id="firstname"
+        name="firstname"
+        placeholder="John Tan"
+        onchange="validateName()"
+        required
+      />
+      <label>Email</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="john@example.com"
+        onchange="validateEmail()"
+        required
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-50">
+      <label>Contact Number</label>
+      <input
+        type="text"
+        id="contact"
+        name="contact"
+        placeholder="91234567"
+        onchange="validateContact()"
+        required
+      />
+    </div>
+    <div class="col-50">
+      <label>Order ID/Stall name</label>
+      <input type="text" name="id" placeholder="ID is found in email" required/>
+    </div>
+  </div>
 
-        <form action="contactus.php" method="post" id="loginForm">
-          <div class="form-input">
-            <label for="myName">*Name:</label>
-            <input
-              type="text"
-              name="name"
-              id="firstname"
-              required
-              onchange="validateName()"
-            />
-            <br />
+  <div class="row">
+    <div class="col-50">
+      <label>Feedback</label>
+      <textarea name="feedback" rows="4" cols="50" style="width:100%" required></textarea>
+    </div>
+  </div>
+  <input type="submit" value="Submit Feedback" class="btn" />
+  </form>
+</div>
+
+ 
+
+  <footer class="footer-distributed">
+        <div class="footer-left">
+          <h3>EAT @ <span>NTU</span></h3>
+
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="store.php">Store</a>
+            ·
+            <a href="contactus.php">Contact Us</a>
+            ·
+            <a href="faq.html">FAQ</a>
+          </p>
+
+          <p class="footer-company-name">EAT @ NTU &copy; 2021</p>
+        </div>
+
+        <div class="footer-center">
+          <div>
+            <p><span>50 Nanyang Avenue</span> Singapore 639798</p>
           </div>
-
-          <div class="form-input">
-            <label for="email">*E-mail:</label>
-            <input
-              name="email"
-              id="email"
-              required
-              onchange="validateEmail()"
-            />
-            <br />
-          </div>
-
-          <div class="form-input">
-            <label for="phoneNum">*Phone No.:</label>
-            <input
-              type="value"
-              name="contact"
-              id="contact"
-              onchange="validateContact()"
-            /><br />
-          </div>
-
-          <div class="form-input">
-          <label for="outlet">Order ID:</label>
-          <input type="number" name="id">
-          </div>
-
-          <div class="form-input">
-            <label
-              style="vertical-align: top; margin-top: 0px"
-              for="myfeedback"
-              >*Feedback:</label
-            >
-            <textarea
-              name="feedback"
-              rows="4"
-              cols="29"
-              placeholder="Enter your feedback here"
-              style="margin-left: 9%"
-              required
-            ></textarea>
-          </div>
-
-          <br />
 
           <div>
-            <input type="submit" value="Submit" />
+            <p>+65 68765432</p>
           </div>
 
-          <br>
+          <div>
+            <p>
+              <a href="mailto:contactus@eatatntu.com">contactus@eatatntu.com</a>
+            </p>
+          </div>
+        </div>
 
-        </form>
-        <br>
-
-      </div>
-
-      <br>
-       
-    </div>
-
-    </div>
-      </main>
-    </div>
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About Us</span>
+            EAT @ NTU!<br />
+            Support our canteens while enjoying free delivery!<br />
+            Order online, enjoy it in the comfort of your place. Stay healthy,
+            not hungry.
+          </p>
+        </div>
+    </footer>
   </body>
   <script type="text/javascript" src="checkout.js"></script>
-
-  <footer>
-    <div class="flex-row-container">
-      <div class="flex-row-item1">
-        <h3>About Us</h3>
-        We are a group on NTU who are passionate about the NTU’s food! NTU’s
-        canteen has been a big part of every student's life. However, ever since
-        COVID-19 in 2019, it has affected both the canteen and student. With the
-        ever-changing rules and regulations, students may find it hard to eat in
-        canteen either due to lack of space or no-dine rules. Government has
-        also frequently encouraged us to not stay in crowded areas and practice
-        social distancing. Thus, we have decided to come out with a food web
-        where users are able to order food online and have them delivered to
-        them. Not only will the students get to enjoy the food, they are also
-        able to avoid the crowds and eat in their room’s comfrotably.
-      </div>
-      <div class="flex-row-item2" style="text-align: center">
-        <a href=index.html>Home</a><br /><br />
-        <a href=store.php>Stores</a><br /><br />
-        <a href=contactus.html>Contact Us</a><br /><br />
-        <a href=faq.html>FAQ</a><br /><br />
-        <a href=myorders.php>My Orders</a><br /><br />
-      </div>
-      <div class="flex-row-item3" style="text-align: center">
-        Get the latest update from us!
-        <br />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your Email Address"
-        />
-      </div>
-    </div>
-  </footer>
 </html>

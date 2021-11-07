@@ -28,7 +28,7 @@
             ><i class="fa fa-fw fa-home"></i> HOME</a
           >
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
-          <a href="contactus.html"
+          <a href="contactus.php"
             ><i class="fa fa-fw fa-envelope"></i> CONTACT US</a
           >
           <a href="faq.html"><i class="fa fa-fw fa-user"></i> FAQ</a>
@@ -51,14 +51,7 @@
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
             <input type="text" id="adr" name="address" placeholder="50 Nanyang Crescent">
 
-
-            <!-- <div class="row">
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="654321">
-            </div>
-          </div> -->
-          <div class="row">
+            <div class="row">
               <div class="col-50">
                 <label for="contact">Contact Number</label>
                 <input type="text" id="contact" name="contact" placeholder="91234567" onchange="validateContact()">
@@ -154,29 +147,53 @@
     </div>
   </div>
 </div>
+
+
+  <footer class="footer-distributed">
+        <div class="footer-left">
+          <h3>EAT @ <span>NTU</span></h3>
+
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="store.php">Store</a>
+            ·
+            <a href="contactus.php">Contact Us</a>
+            ·
+            <a href="faq.html">FAQ</a>
+          </p>
+
+          <p class="footer-company-name">EAT @ NTU &copy; 2021</p>
+        </div>
+
+        <div class="footer-center">
+          <div>
+            <p><span>50 Nanyang Avenue</span> Singapore 639798</p>
+          </div>
+
+          <div>
+            <p>+65 68765432</p>
+          </div>
+
+          <div>
+            <p>
+              <a href="mailto:contactus@eatatntu.com">contactus@eatatntu.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About Us</span>
+            EAT @ NTU!<br />
+            Support our canteens while enjoying free delivery!<br />
+            Order online, enjoy it in the comfort of your place. Stay healthy,
+            not hungry.
+          </p>
+        </div>
+      </footer>
       </div>
   </body>
-
-    <footer>
-      <div class="flex-row-container">
-        <div class="flex-row-item1">
-          <h3>About Us</h3>
-          We are a group on NTU who are passionate about the NTU’s food! NTU’s canteen has been a big part of every student's life. However, ever since COVID-19 in 2019, it has affected both the canteen and student. With the ever-changing rules and regulations, students may find it hard to eat in canteen either due to lack of space or no-dine rules. Government has also frequently encouraged us to not stay in crowded areas and practice social distancing. Thus, we have decided to come out with a food web where users are able to order food online and have them delivered to them. Not only will the students get to enjoy the food, they are also able to avoid the crowds and eat in their room’s comfrotably.
-        </div>
-        <div class="flex-row-item2" style="text-align: center;">
-          Home<br><br>
-          Stores<br><br>
-          Contact Us<br><br>
-          FAQ<br><br>
-          My Orders<br><br>
-        </div>
-        <div class="flex-row-item3" style="text-align: center;">
-          Get the latest update from us!
-          <br>
-          <input type="email" id="email" name="email" placeholder="Your Email Address">
-        </div>
-      </div>
-    </footer>
     <script type="text/javascript" src="checkout.js"></script>
 
   </html>

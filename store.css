@@ -51,7 +51,7 @@
 }
 .product-button:hover,
 .product-button:focus {
-  background-color: black;
+  background-color: #04aa6d;
   text-decoration: none;
   cursor: pointer;
 }
@@ -119,11 +119,21 @@
   color: #303c63;
 }
 
+.modal-table label{
+  cursor: pointer;
+}
+
+.modal-table label :hover{
+  background-color: #ccc;
+}
+
 .sidebar {
   float: left;
   width: 200px;
   margin-left: 25px;
-  background: #ffffff;
+  background: rgba(244, 151, 108, 0.73);
+  font-family: Roboto;
+  font-style: normal;
   border-radius: 10px;
   position: sticky;
   top: 95px;
@@ -145,4 +155,3 @@
   background-color: #555;
   color: white;
 }
-

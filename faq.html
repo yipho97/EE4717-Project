@@ -26,9 +26,6 @@
           <a href="store.php"><i class="fa fa-fw fa-search"></i> STORE</a>
           <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
-          <!-- <a onclick="openNav()" &#9776;
-                ><img class="logo-image" href="cart.php" src="assets/logo.png" />
-              </a> -->
         </div>
           <form action="myorders.php" method="post" class="form-container">
             <input
@@ -41,112 +38,91 @@
             <button type="submit">Track Order</button>
           </form>
       </div>
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;
-        </a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
-
       <main>
-
-        <br>
-        
         <div class=faq>
-
-        <h1 style="text-align: center;">About Us!</h1>
-
-        <div class=aboutus>
-          We are a group on NTU who are passionate about the NTU’s food! NTU’s canteen has been a big part of every student’s life.
-          They serve various kind of cuisine, from breakfast to dinner, and occasionally suppper.
-          However, ever since COVID-19 in 2019, it has affected both the canteen and student.
-          With the ever-changing rules and regulations, students may find it hard to eat in canteen either due to lack of space or no-dine rules.
-          Government has also frequently encouraged us to not stay in crowded areas and practice social distancing.
-          <br>
-          <br>
-          Thus, we have decided to come out with a food web where users are able to order food online and have them delivered to them.
-          Not only will the students get to enjoy the food, they are also able to avoid the crowds and eat in their room’s comfortably.
+          <h1 style="text-align: center;">FAQ</h1>
+          <div class=aboutus>
+            <button class="faqsection">How do I place an order using the website?</button>
+            <div class="panel">
+              <p>1. You can select which store you want to eat from. <br>
+                 2. Order the food from the store and any add-ons. <br>
+                 3. Checkout your order from the side cart. <br>
+                 4. Fill in the necessary details before making payment. <br>
+                 5. Received your order ID. <br>
+              </p>
+            </div>
+            <button class="faqsection">Why is there no deliver charge?</button>
+            <div class="panel">
+              <p>We hope this website will not only just be user-friendly but also price-friendly to students in NTU. Thus, the delivery charges have been removed so that students can enjoy and support the stores in NTU.</p>
+            </div>
+          </div>
         </div>
-
-        <br>
-
-      </div>
-
-      <br>
-      
-      <div class=faq>
-
-        <h1 style="text-align: center;">FAQ</h1>
-
-        <div class=aboutus>
-          <button class="faqsection">How do I place an order using the website?</button>
-          <div class="panel">
-            <p>1. You can select which store you want to eat from. <br>
-               2. Order the food from the store and any add-ons. <br>
-               3. Checkout your order from the side cart. <br>
-               4. Fill in the necessary details before making payment. <br>
-               5. Received your order ID. <br>
+        <div class=faq>
+          <h1 style="text-align: center;">About Us!</h1>
+          <div class=aboutus>
+            <p>
+            We are a group on NTU who are passionate about the NTU’s food! NTU’s canteen has been a big part of every student’s life.
+            They serve various kind of cuisine, from breakfast to dinner, and occasionally suppper.
+            However, ever since COVID-19 in 2019, it has affected both the canteen and student.
+            With the ever-changing rules and regulations, students may find it hard to eat in canteen either due to lack of space or no-dine rules.
+            Government has also frequently encouraged us to not stay in crowded areas and practice social distancing.
+            
+            <br>
+            Thus, we have decided to come out with a food web where users are able to order food online and have them delivered to them.
+            Not only will the students get to enjoy the food, they are also able to avoid the crowds and eat in their room’s comfortably.
             </p>
-
           </div>
-          
-          <button class="faqsection">Why is there no deliver charge?</button>
-          <div class="panel">
-            <p>We hope this website will not only just be user-friendly but also price-friendly to students in NTU. Thus, the delivery charges have been removed so that students can enjoy and support the stores in NTU.</p>
-          </div>
-          
-          
+          <br>
         </div>
-        
         <br>
-
-      </div>
+      
 
       <br>
-       
-    </div>
-
-    </div>
       </main>
-    </div>
-  </body>
-  <script type="text/javascript" src="faq.js"></script>
+      <footer class="footer-distributed">
+        <div class="footer-left">
+          <h3>EAT @ <span>NTU</span></h3>
 
-  <footer>
-    <div class="flex-row-container">
-      <div class="flex-row-item1">
-        <h3>About Us</h3>
-        We are a group on NTU who are passionate about the NTU’s food! NTU’s
-        canteen has been a big part of every student's life. However, ever since
-        COVID-19 in 2019, it has affected both the canteen and student. With the
-        ever-changing rules and regulations, students may find it hard to eat in
-        canteen either due to lack of space or no-dine rules. Government has
-        also frequently encouraged us to not stay in crowded areas and practice
-        social distancing. Thus, we have decided to come out with a food web
-        where users are able to order food online and have them delivered to
-        them. Not only will the students get to enjoy the food, they are also
-        able to avoid the crowds and eat in their room’s comfrotably.
-      </div>
-      <div class="flex-row-item2" style="text-align: center">
-        <a href=index.html>Home</a><br /><br />
-        <a href=store.php>Stores</a><br /><br />
-        <a href=contactus.html>Contact Us</a><br /><br />
-        <a href=faq.html>FAQ</a><br /><br />
-        <a href=myorders.php>My Orders</a><br /><br />
-      </div>
-      <div class="flex-row-item3" style="text-align: center">
-        Get the latest update from us!
-        <br />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your Email Address"
-        />
-      </div>
-    </div>
-  </footer>
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="store.php">Store</a>
+            ·
+            <a href="contactus.php">Contact Us</a>
+            ·
+            <a href="faq.html">FAQ</a>
+          </p>
+
+          <p class="footer-company-name">EAT @ NTU &copy; 2021</p>
+        </div>
+
+        <div class="footer-center">
+          <div>
+            <p><span>50 Nanyang Avenue</span> Singapore 639798</p>
+          </div>
+
+          <div>
+            <p>+65 68765432</p>
+          </div>
+
+          <div>
+            <p>
+              <a href="mailto:contactus@eatatntu.com">contactus@eatatntu.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About Us</span>
+            EAT @ NTU!<br />
+            Support our canteens while enjoying free delivery!<br />
+            Order online, enjoy it in the comfort of your place. Stay healthy,
+            not hungry.
+          </p>
+        </div>
+    </footer>
+  </div>
+</body>
+<script type="text/javascript" src="faq.js"></script>
 </html>

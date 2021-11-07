@@ -1,6 +1,6 @@
 body {
   margin: auto;
-  background-color: #F0E3CA;
+  background-color: #f0e3ca;
   font-size: 13px;
   width: 90%;
   font-family: Roboto;
@@ -10,11 +10,11 @@ body {
 }
 
 #wrapper {
-  background-color: #F0E3CA;
+  background-color: #f0e3ca;
 }
 
 head,
-footer,
+/* footer, */
 #wrapper {
   margin-left: 40px;
   margin-right: 40px;
@@ -47,22 +47,22 @@ footer,
 .navbar a:hover {
   background-color: #636b6c;
 }
-.form-container{
-  margin-right: 110px;
+.form-container {
+  margin-right: 90px;
 }
 .form-container button:hover {
-  background-color: #89a6aa;
+  background-color: #04aa6d;
+  cursor: pointer;
 }
 
-.form-container input{
+.form-container input {
   width: 120px;
   height: 30px;
 }
 
-.form-container button{
-  height:30px;
+.form-container button {
+  height: 30px;
   border-radius: 10px;
-
 }
 
 .nav-link {
@@ -79,7 +79,6 @@ main {
   /* padding: 0px 0px 66px 0px; */
   /* background-color: #b4dfe5; */
   color: #2b1d0e;
-
 }
 
 /* Slideshow container */
@@ -88,7 +87,6 @@ main {
   position: relative;
   margin: auto;
   justify-content: center;
-
 }
 
 /* Hide the images by default */
@@ -164,7 +162,7 @@ main {
 }
 
 h2 {
-  background-color: #F0E3CA;
+  background-color: #f0e3ca;
   font-size: 30px;
   text-align: center;
   margin-top: 0px;
@@ -239,36 +237,7 @@ h2 {
   transform: rotateY(180deg);
 }
 
-/* ---------- FOOTER ------------ */
-.flex-row-container {
-  background: #aaa;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
 
-.flex-row-item1 {
-  flex: 30%;
-  background-color: #e8e8e8;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 175px;
-}
-.flex-row-item2 {
-  flex: 25%;
-  background-color: #e8e8e8;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 175px;
-}
-.flex-row-item3 {
-  flex: 35%;
-  background-color: #e8e8e8;
-  padding-left: 15px;
-  padding-right: 15px;
-  height: 175px;
-}
 
 /* The Close Button */
 .close {
@@ -284,15 +253,6 @@ h2 {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
-
-footer {
-  background-color: #e8e8e8;
-  font-size: 11px;
-  font-style: italic;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
 }
 
 * {
@@ -313,7 +273,7 @@ footer {
   margin-right: 15px;
 }
 
-.price-label{
+.price-label {
   text-align: right;
   margin-right: 15px;
 }
@@ -344,7 +304,7 @@ footer {
   min-height: 100px;
   margin: 5px;
   border-radius: 10px;
-  background-color: #F0E3CA;
+  background-color: #f0e3ca;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -397,7 +357,7 @@ footer {
 .img-button {
   width: 116px;
   height: 30px;
-  background: #F0E3CA;
+  background: #f0e3ca;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
@@ -420,12 +380,12 @@ footer {
   cursor: pointer;
 }
 
-.cart-count{
+.cart-count {
   position: absolute;
   top: 16px;
   padding: 2px;
   border-radius: 40%;
-  background:beige ;
+  background: beige;
 }
 .btn-w-icon-label {
   font-family: Roboto;
@@ -449,7 +409,7 @@ footer {
 
 .btn-w-icon-label:hover,
 .btn-w-icon-label:focus {
-  background-color: black;
+  background-color: #04aa6d;
   text-decoration: none;
   cursor: pointer;
 }
@@ -476,60 +436,56 @@ footer {
   color: #303c63;
 }
 
-.contactus{
-  background-color: #FBE8A6;
+.contactus {
+  background-color: #fbe8a6;
   width: 60%;
-  margin:auto;
+  margin: auto;
   border: 3px solid black;
 }
 
 #loginForm {
   background-color: #eeea;
   width: 60%;
-  margin:auto;
+  margin: auto;
   border: 3px solid black;
-  text-align:center;
-
+  text-align: center;
 }
 
-label{
-  float: left;
-    clear: left;
-    display: block;
-    width: 100px;
-    text-align: right;
-    padding-right: 10px;
-    margin-top: 10px;
-}
-
-
-.aboutus{
+.aboutus {
   background-color: #eeea;
+  color: #303c63;
   width: 60%;
-  margin:auto;
+  margin: auto;
   border: 3px solid black;
-  text-align:left;
-  Font-family: Roboto;
-  Font-size: 18px;
-  Line-height: 21px;
-  Line-height: 200%;
-  Vertical-align: Top;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 15px;
+  line-height: 200%;
+}
+
+.aboutus p {
+  margin: 20px;
 }
 
 .faqsection {
   background-color: #eeea;
-  color: #444;
+  color: #303c63;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   text-align: left;
   border: none;
   outline: none;
+  font-size: 16px;
+  font-weight: bold;
   transition: 0.4s;
+  border-top: 0.5px solid;
+  border-bottom: 0.5px solid;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.dropDown, .faqsection:hover {
+.dropDown,
+.faqsection:hover {
   background-color: #ccc;
 }
 
@@ -542,7 +498,7 @@ label{
 }
 
 .faqsection:after {
-  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
   color: #777;
   float: right;
@@ -552,3 +508,106 @@ label{
 .dropDown:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
+/* Footer section */
+ .footer-distributed{
+  background-color: #b9af9d;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px Roboto;
+  
+  padding: 55px 50px;
+  margin-top: 80px;
+ }
+  
+ .footer-distributed .footer-left,
+ .footer-distributed .footer-center,
+ .footer-distributed .footer-right{
+  display: inline-block;
+  vertical-align: top;
+ }
+  
+ .footer-distributed .footer-left{
+  width: 40%;
+ }
+  
+ .footer-distributed h3{
+  color:  #303c63;
+  font: normal 36px 'Cookie', Roboto;
+  margin: 0;
+ }
+  
+ .footer-distributed h3 span{
+  color:  #5383d3;
+ }
+  
+  
+ .footer-distributed .footer-links{
+  color:  #303c63;
+  margin: 20px 0 12px;
+  padding: 0;
+ }
+  
+ .footer-distributed .footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color:  inherit;
+ }
+  
+ .footer-distributed .footer-company-name{
+  color:  #303c63;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+ }
+  
+  
+ .footer-distributed .footer-center{
+  width: 35%;
+ }
+  
+
+
+ .footer-distributed .footer-center p{
+  display: inline-block;
+  color: #303c63;
+  vertical-align: middle;
+  margin:0;
+  padding-bottom: 10px;
+ }
+  
+ .footer-distributed .footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+ }
+  
+ .footer-distributed .footer-center p a{
+  color:  #5383d3;
+  text-decoration: none;;
+ }
+  
+ .footer-distributed .footer-right{
+  width: 20%;
+ }
+  
+ .footer-distributed .footer-company-about{
+  line-height: 20px;
+  color:  #303c63;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+ }
+  
+ .footer-distributed .footer-company-about span{
+  display: block;
+  color:  #303c63;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+ }
+  

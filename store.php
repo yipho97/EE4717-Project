@@ -11,7 +11,6 @@
   <?php
     // Session to pull data into cart
     session_start();
-
     // Adding food type and addons to session['cart'] object
     if ($_POST['product']) {
       $typePrice = $_POST['typePrice'];
@@ -61,14 +60,11 @@
       $row = $result->fetch_assoc();
       array_push($arr, $row);
     }
-
-
-
   ?>
 
   <body id="body">
     <div id="wrapper">
-    <div class="navbar">
+      <div class="navbar">
         <a href="index.html"
           ><img
             class="logo-image"
@@ -83,7 +79,7 @@
           <a href="contactus.php">CONTACT US</a>
           <a href="faq.html">FAQ</a>
         </div>
-        <a href="javascript:openNav()">
+        <a href="javascript:openNav()" style="margin-right: 240px">
         <img src="assets/shopping-cart.png" alt="shopping-cart.png">
         <span class='cart-count'><?php echo count($_SESSION['cart']); ?></span>
         </a>
@@ -114,7 +110,7 @@
                           // Iterate types array to attach table rows
                           foreach($types as $key=>$value) {
                             echo "<tr>
-                                    <td><input type=\"radio\" name=\"typePrice\" value=\"{$value}, {$type_prices[$key]}\" required>{$value}</td>
+                                    <td><label><input type=\"radio\" name=\"typePrice\" value=\"{$value}, {$type_prices[$key]}\" required>{$value}</label></td>
                                     <td>\${$type_prices[$key]}</td>
                                     <input type=\"hidden\" name=\"type_price\" value=\"{$type_prices[$key]}\">
                                   </tr>";
@@ -136,7 +132,7 @@
                           // Iterate types array to attach table rows
                           foreach($addons as $key=>$value) {
                             echo "<tr>
-                                    <td><input type=\"checkbox\" name=\"addons[]\" value=\"{$value},{$addons_prices[$key]}\">{$value}</td>
+                                    <td><label><input type=\"checkbox\" name=\"addons[]\" value=\"{$value},{$addons_prices[$key]}\">{$value}</label></td>
                                     <td>\${$addons_prices[$key]}</td>
                                   </tr>";
                           }
@@ -156,7 +152,6 @@
         ?>
       <div> 
         <!-- Display container for products -->
-        
       <div class="sidebar">
         <h3 class="header-w-icon">
           <img src="assets/location.png" alt="location.png">
@@ -177,8 +172,6 @@
             <div style="height: 600px">
           <?php
           if($_SESSION['cart']){
-              // print_r($_SESSION['location']);
-              // print_r($_SESSION['cart']);
               // Iterate cart object, $key->product index, $value-> Array of info
               foreach($_SESSION['cart'] as $key=>$value) {
                 // Strip spaces and tolower for img tagg path
@@ -268,40 +261,49 @@
                 ?>
         </div>
 
-<footer>
-  <div class="flex-row-container">
-    <div class="flex-row-item1">
-      <h3>About Us</h3>
-      We are a group on NTU who are passionate about the NTU’s food! NTU’s
-      canteen has been a big part of every student's life. However, ever since
-      COVID-19 in 2019, it has affected both the canteen and student. With the
-      ever-changing rules and regulations, students may find it hard to eat in
-      canteen either due to lack of space or no-dine rules. Government has
-      also frequently encouraged us to not stay in crowded areas and practice
-      social distancing. Thus, we have decided to come out with a food web
-      where users are able to order food online and have them delivered to
-      them. Not only will the students get to enjoy the food, they are also
-      able to avoid the crowds and eat in their room’s comfrotably.
-    </div>
-    <div class="flex-row-item2" style="text-align: center">
-        <a href=index.html>Home</a><br /><br />
-        <a href=store.php>Stores</a><br /><br />
-        <a href=contactus.html>Contact Us</a><br /><br />
-        <a href=faq.html>FAQ</a><br /><br />
-        <a href=myorders.php>My Orders</a><br /><br />
-    </div>
-    <div class="flex-row-item3" style="text-align: center">
-      Get the latest update from us!
-      <br />
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Your Email Address"
-      />
-    </div>
-  </div>
-</footer>
+        <footer class="footer-distributed">
+        <div class="footer-left">
+          <h3>EAT @ <span>NTU</span></h3>
+
+          <p class="footer-links">
+            <a href="index.html">Home</a>
+            ·
+            <a href="store.php">Store</a>
+            ·
+            <a href="contactus.php">Contact Us</a>
+            ·
+            <a href="faq.html">FAQ</a>
+          </p>
+
+          <p class="footer-company-name">EAT @ NTU &copy; 2021</p>
+        </div>
+
+        <div class="footer-center">
+          <div>
+            <p><span>50 Nanyang Avenue</span> Singapore 639798</p>
+          </div>
+
+          <div>
+            <p>+65 68765432</p>
+          </div>
+
+          <div>
+            <p>
+              <a href="mailto:contactus@eatatntu.com">contactus@eatatntu.com</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About Us</span>
+            EAT @ NTU!<br />
+            Support our canteens while enjoying free delivery!<br />
+            Order online, enjoy it in the comfort of your place. Stay healthy,
+            not hungry.
+          </p>
+        </div>
+      </footer>
 <script type="text/javascript" src="store.js"></script>
 
 </html>
