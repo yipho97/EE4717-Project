@@ -33,11 +33,7 @@ Logs down particulars of customer and individual feedback, order_id is a text fi
 - Nav bar element with order tracking form to be inherited in subsequent pages.
 - Slideshow component to display hero image for canteens href to store.php
 - Flipcard component to showcase various canteen and their operating hours href to store.php
-
-- register function routes to "/register" which also accepts a form via POST to be logged into db.
-
 - Footer to be inherited by subsequent pages
-
 - JS.js, styles.css dependencies for slideshow and flipcard 
 
 #### **`store.php`**
